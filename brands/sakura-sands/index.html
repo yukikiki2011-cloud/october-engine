@@ -196,6 +196,102 @@
     @media (max-width: 900px) {
       .market-split { grid-template-columns: 1fr; }
     }
+
+    /* ── 13色カラーカード ── */
+    .color-grid-13 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .color-card {
+      border-radius: 6px;
+      padding: 14px 14px 12px;
+      background: #fff;
+      border: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: box-shadow 0.2s;
+    }
+    .color-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .color-swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .color-card-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      line-height: 1.3;
+      color: #1a1a1a;
+    }
+    .color-card-en {
+      font-size: 0.66rem;
+      color: #aaa;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .color-card-concept {
+      font-size: 0.75rem;
+      color: #666;
+      line-height: 1.5;
+      border-top: 1px solid #f0ece8;
+      padding-top: 7px;
+    }
+    .color-card-amenity {
+      font-size: 0.72rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .color-card-amenity::before {
+      content: "▸";
+      font-size: 0.6rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .color-card-price {
+      font-size: 0.65rem;
+      color: #bbb;
+      font-weight: 400;
+    }
+
+    /* チャプタースライドの13色ドット */
+    .color-dots-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .color-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .color-grid-13 { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .color-grid-13 { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -889,7 +985,260 @@
   </section>
 
   <!-- ======================================================
-       SLIDE 15 / 15 — クロージング
+       SLIDE 15 / 17 — チャプター：13色コンセプト
+  ====================================================== -->
+  <section class="slide slide-chapter">
+    <div class="slide-inner">
+      <span class="label" style="display:inline-block; margin-bottom: 20px;">Color Identity</span>
+      <h2>13 Colors of Harmony</h2>
+      <p style="color:#888; margin-top: 10px; font-size: 0.95rem;">
+        日本の伝統色13色が、それぞれの部屋に宿る感情と体験を設計する。<br>
+        各色に良品計画のプロダクトを紐づけ、「色彩ごとのアメニティ体験」を実現します。
+      </p>
+      <div class="color-dots-row">
+        <span class="color-dot" style="background:#f7d9d9"></span>
+        <span class="color-dot" style="background:#eebbcb"></span>
+        <span class="color-dot" style="background:#f8b500"></span>
+        <span class="color-dot" style="background:#78a355"></span>
+        <span class="color-dot" style="background:#007b43"></span>
+        <span class="color-dot" style="background:#00a3af"></span>
+        <span class="color-dot" style="background:#274a78"></span>
+        <span class="color-dot" style="background:#884898"></span>
+        <span class="color-dot" style="background:#c3d825"></span>
+        <span class="color-dot" style="background:#b19693"></span>
+        <span class="color-dot" style="background:#fbca4d"></span>
+        <span class="color-dot" style="background:#6c3524"></span>
+        <span class="color-dot" style="background:#333333"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 16 / 17 — 13色 × MUJIアメニティ グリッド
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">13 Colors × MUJI Amenity</span>
+      <h2>13の色彩と、良品計画の代表アメニティ</h2>
+      <p>各フロアの色彩コンセプトに呼応した無印良品プロダクトを、専用アメニティとして配備します。</p>
+
+      <div class="color-grid-13">
+
+        <!-- 01 桜色 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#f7d9d9"></div>
+            <div>
+              <div class="color-card-name">桜色</div>
+              <div class="color-card-en">Sakura · Kindness</div>
+            </div>
+          </div>
+          <p class="color-card-concept">柔らかな歓迎。旅の始まりを包む優しいピンク。</p>
+          <div class="color-card-amenity">
+            泡立てボール・小（持ち帰り可）
+            <span class="color-card-price">¥99</span>
+          </div>
+        </div>
+
+        <!-- 02 撫子 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#eebbcb"></div>
+            <div>
+              <div class="color-card-name">撫子</div>
+              <div class="color-card-en">Nadeshiko · Tenderness</div>
+            </div>
+          </div>
+          <p class="color-card-concept">繊細さと慈しみ。日本の女性美に宿る丁寧さ。</p>
+          <div class="color-card-amenity">
+            敏感肌用薬用美白化粧水（ミニ）
+            <span class="color-card-price">¥290〜</span>
+          </div>
+        </div>
+
+        <!-- 03 鬱金 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#f8b500"></div>
+            <div>
+              <div class="color-card-name">鬱金</div>
+              <div class="color-card-en">Ukon · Energy</div>
+            </div>
+          </div>
+          <p class="color-card-concept">朝の光のような生命力。活動的な一日への後押し。</p>
+          <div class="color-card-amenity">
+            ハーブ＆ルイボスティーバッグ（5袋）
+            <span class="color-card-price">¥199〜</span>
+          </div>
+        </div>
+
+        <!-- 04 萌黄 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#78a355"></div>
+            <div>
+              <div class="color-card-name">萌黄</div>
+              <div class="color-card-en">Moegi · Vitality</div>
+            </div>
+          </div>
+          <p class="color-card-concept">新緑のエネルギー。自然素材に帰る清々しさ。</p>
+          <div class="color-card-amenity">
+            オーガニックコットン フェイスタオル
+            <span class="color-card-price">¥990〜</span>
+          </div>
+        </div>
+
+        <!-- 05 常磐 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#007b43"></div>
+            <div>
+              <div class="color-card-name">常磐</div>
+              <div class="color-card-en">Tokiwa · Forest</div>
+            </div>
+          </div>
+          <p class="color-card-concept">深い森の癒やし。都市の喧騒から完全に離れる。</p>
+          <div class="color-card-amenity">
+            ひのきの入浴剤（バスソルト）
+            <span class="color-card-price">¥490〜</span>
+          </div>
+        </div>
+
+        <!-- 06 浅葱 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#00a3af"></div>
+            <div>
+              <div class="color-card-name">浅葱</div>
+              <div class="color-card-en">Asagi · Sea</div>
+            </div>
+          </div>
+          <p class="color-card-concept">清流・海の透明感。サステナブルな暮らしを体現。</p>
+          <div class="color-card-amenity">
+            自分で詰める水のボトル（330ml）
+            <span class="color-card-price">¥190</span>
+          </div>
+        </div>
+
+        <!-- 07 瑠璃 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#274a78"></div>
+            <div>
+              <div class="color-card-name">瑠璃</div>
+              <div class="color-card-en">Ruri · Deep Sleep</div>
+            </div>
+          </div>
+          <p class="color-card-concept">深夜の星空。最高の睡眠体験を設計する深い藍。</p>
+          <div class="color-card-amenity">
+            脇に縫い目のない二重ガーゼパジャマ
+            <span class="color-card-price">¥4,990</span>
+          </div>
+        </div>
+
+        <!-- 08 菖蒲 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#884898"></div>
+            <div>
+              <div class="color-card-name">菖蒲</div>
+              <div class="color-card-en">Ayame · Meditation</div>
+            </div>
+          </div>
+          <p class="color-card-concept">瞑想と精神性。心の雑音を静める深い紫の空間。</p>
+          <div class="color-card-amenity">
+            アロマストーン ＋ ラベンダー精油
+            <span class="color-card-price">¥990〜</span>
+          </div>
+        </div>
+
+        <!-- 09 鶸茶 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#c3d825"></div>
+            <div>
+              <div class="color-card-name">鶸茶</div>
+              <div class="color-card-en">Hiwacha · Clarity</div>
+            </div>
+          </div>
+          <p class="color-card-concept">爽快な目覚め。思考をクリアにする鮮烈な黄緑。</p>
+          <div class="color-card-amenity">
+            グリーンルイボスティーバッグ（5袋）
+            <span class="color-card-price">¥199〜</span>
+          </div>
+        </div>
+
+        <!-- 10 灰桜 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#b19693"></div>
+            <div>
+              <div class="color-card-name">灰桜</div>
+              <div class="color-card-en">Haizakura · Subtlety</div>
+            </div>
+          </div>
+          <p class="color-card-concept">消え入りそうな淡さ。本質だけを残したミニマル。</p>
+          <div class="color-card-amenity">
+            米ぬか保湿フェイスソープ（個包装）
+            <span class="color-card-price">¥350〜</span>
+          </div>
+        </div>
+
+        <!-- 11 蜜柑 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#fbca4d"></div>
+            <div>
+              <div class="color-card-name">蜜柑</div>
+              <div class="color-card-en">Mikan · Warmth</div>
+            </div>
+          </div>
+          <p class="color-card-concept">陽だまりの温もり。台所から旅の喜びが始まる。</p>
+          <div class="color-card-amenity">
+            バターチキンカレー（ウェルカムギフト）
+            <span class="color-card-price">¥350</span>
+          </div>
+        </div>
+
+        <!-- 12 団十郎茶 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#6c3524"></div>
+            <div>
+              <div class="color-card-name">団十郎茶</div>
+              <div class="color-card-en">Danjurocha · Craft</div>
+            </div>
+          </div>
+          <p class="color-card-concept">江戸歌舞伎の深い茶。職人精神と伝統の美学。</p>
+          <div class="color-card-amenity">
+            ステンレスワイヤーバスケット（魅せる収納）
+            <span class="color-card-price">¥990〜</span>
+          </div>
+        </div>
+
+        <!-- 13 墨 -->
+        <div class="color-card">
+          <div class="color-swatch-row">
+            <div class="color-swatch" style="background:#333333"></div>
+            <div>
+              <div class="color-card-name">墨</div>
+              <div class="color-card-en">Sumi · Silence</div>
+            </div>
+          </div>
+          <p class="color-card-concept">すべてを削ぎ落とした「無」の境地。最上の静寂。</p>
+          <div class="color-card-amenity">
+            アロマキャンドル（チャコールウッドの香り）
+            <span class="color-card-price">¥790〜</span>
+          </div>
+        </div>
+
+      </div>
+      <span class="source-note">※各商品価格は無印良品公式サイト参考価格（税込）。株主優待適用時はさらに7%引き。</span>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 17 / 17 — クロージング
   ====================================================== -->
   <section class="slide slide-closing">
     <div class="slide-inner text-center">
