@@ -1,0 +1,149 @@
+/* ============================================================
+   OCTOBER ENGINE — Slide Engine Core Layout
+   構造レイアウトのみ。色・タイポグラフィはthemeに委譲。
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---- Slide Deck Container ---- */
+.slide-deck {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---- Individual Slide ---- */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 80px 80px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slide-inner {
+  max-width: 1060px;
+  width: 100%;
+}
+
+/* ---- Navigation Buttons (injected by JS) ---- */
+.slide-nav {
+  position: fixed;
+  bottom: 36px;
+  right: 40px;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.slide-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--nav-color, #7f0019);
+  background: transparent;
+  color: var(--nav-color, #7f0019);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-nav button:hover:not(:disabled) {
+  background: var(--nav-color, #7f0019);
+  color: #fff;
+}
+
+.slide-nav button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* ---- Progress Bar (injected by JS) ---- */
+.slide-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent-color, #7f0019);
+  transition: width 0.4s ease;
+  z-index: 200;
+}
+
+/* ---- Slide Counter (injected by JS) ---- */
+.slide-counter {
+  position: fixed;
+  bottom: 44px;
+  left: 40px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #aaa;
+  z-index: 100;
+}
+
+/* ---- Diagram Grid Layouts ---- */
+.diagram-container {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.comparison-lr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .slide { padding: 48px 28px 72px; }
+  .comparison-lr, .grid-2col { grid-template-columns: 1fr; }
+  .grid-3col { grid-template-columns: 1fr 1fr; }
+  .grid-4col { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .slide { padding: 40px 20px 72px; }
+  .grid-3col, .grid-4col { grid-template-columns: 1fr; }
+}

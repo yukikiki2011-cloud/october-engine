@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Sands Suites × 良品計画 ブランディング提案</title>
+  <link rel="stylesheet" href="../../engine/slide-engine.css">
+  <link rel="stylesheet" href="../../theme/default-theme.css">
+  <style>
+    :root {
+      --accent-color: #7f0019; /* 無印良品レッド */
+      --nav-color: #7f0019;
+    }
+
+    /* ── 固有スタイル ── */
+    .text-accent   { color: var(--accent-color); font-weight: bold; }
+    .mt-4          { margin-top: 1rem; }
+    .mb-2          { margin-bottom: 0.5rem; }
+    .text-center   { text-align: center; }
+
+    /* 画像プレースホルダー */
+    .img-placeholder {
+      width: 100%;
+      height: 260px;
+      background-color: #f5f5f2;
+      border: 2px dashed #d0cdc8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #888;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      padding: 14px;
+      gap: 6px;
+    }
+    .img-placeholder a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      word-break: break-all;
+      font-size: 0.75rem;
+      margin-top: 6px;
+    }
+
+    /* 戦略数値ハイライトボックス */
+    .strategy-box {
+      background-color: rgba(127, 0, 25, 0.05);
+      border-left: 4px solid var(--accent-color);
+      padding: 16px 18px;
+      margin-top: 14px;
+      border-radius: 0 4px 4px 0;
+    }
+    .strategy-num {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .source-note {
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* タイトルスライド固有 */
+    .slide-title .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: #b07070;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .slide-title p {
+      color: #b0aba6;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    /* ブランド概要スライド独自レイアウト */
+    .brand-spec {
+      background: #f7f7f4;
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-size: 0.88rem;
+    }
+    .brand-spec table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .brand-spec td {
+      padding: 7px 0;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    .brand-spec td:first-child {
+      color: #999;
+      font-size: 0.78rem;
+      width: 130px;
+      padding-right: 16px;
+    }
+    .brand-spec tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 市場スライドの2ペイン */
+    .market-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 24px;
+      align-items: start;
+    }
+    .market-insight {
+      background: #1a1a1a;
+      color: #f5f5f0;
+      border-radius: 4px;
+      padding: 22px 24px;
+    }
+    .market-insight h3 {
+      color: #b07070;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .market-insight p {
+      color: #ccc;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .market-insight .big-num {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* OTAスコア影響 視覚バー */
+    .score-bar-wrap { margin-top: 16px; }
+    .score-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .score-bar-label { font-size: 0.8rem; color: #666; width: 140px; flex-shrink: 0; }
+    .score-bar-bg {
+      flex: 1;
+      height: 12px;
+      background: #eee;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%;
+      background: var(--accent-color);
+      border-radius: 6px;
+    }
+    .score-bar-val { font-size: 0.8rem; font-weight: 700; color: var(--accent-color); width: 60px; text-align: right; }
+
+    /* クロージング */
+    .closing-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 28px auto;
+    }
+    .closing-tagline {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--accent-color);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .closing-body {
+      font-size: 1rem;
+      color: #666;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .closing-credit {
+      margin-top: 36px;
+      font-size: 0.72rem;
+      color: #ccc;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 900px) {
+      .market-split { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="slide-deck">
+
+  <!-- ======================================================
+       SLIDE 1 / 15 — タイトル
+  ====================================================== -->
+  <section class="slide slide-title">
+    <div class="slide-inner">
+      <span class="eyebrow">Sakura Sands Suites Hotel — Brand Proposal</span>
+      <h1>「これでいい」が、<br>最高の贅沢と利回りを生む。</h1>
+      <p>良品計画のプロダクトを活用した<br>高稼働・低コスト運営の実現</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 2 / 15 — ブランド概要
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">Brand Identity</span>
+      <h2>Sakura Sands Suites とは</h2>
+      <p>「桜の砂浜」——日本の美意識と、砂浜のような自然の包容力を重ね合わせたコンセプトホテル。<br>
+         訪日富裕層が求める「暮らすように泊まる体験」を、合理的なコストで実現します。</p>
+
+      <div class="brand-pillars">
+        <div class="pillar">
+          <span class="pillar-en">Live</span>
+          <h3>暮らす滞在</h3>
+          <p>フルキッチン・ランドリー完備。3泊以上を前提とした<br>Long-Term Stay設計。</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-en">Simple</span>
+          <h3>引き算の美学</h3>
+          <p>余分な装飾を排除し、素材と機能に徹した空間。<br>MUJI哲学との完全な一致。</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-en">Return</span>
+          <h3>再訪を設計する</h3>
+          <p>帰国後も「MUJI体験」が続くアメニティ設計。<br>口コミとリピートを同時に生む。</p>
+        </div>
+      </div>
+
+      <div class="brand-spec">
+        <table>
+          <tr><td>ターゲット</td><td>欧米・豪州・東アジアの富裕層インバウンド旅行者（35〜55歳）</td></tr>
+          <tr><td>コンセプト</td><td>「日本に住んでいるような1週間」LTS（Long-Term Stay）スイート</td></tr>
+          <tr><td>目標ADR</td><td>¥35,000〜50,000 / 泊（スイートルーム）</td></tr>
+          <tr><td>目標稼働率</td><td>75%（年間目標）/ OTA評価 9.0以上維持</td></tr>
+          <tr><td>規模想定</td><td>20室規模（スケーラブル設計で50室まで対応可）</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 3 / 15 — 市場環境
+  ====================================================== -->
+  <section class="slide slide-market">
+    <div class="slide-inner">
+      <span class="label">Market Context</span>
+      <h2>市場環境：インバウンドの「今」と「次」</h2>
+      <p>日本のインバウンド市場は過去最高を更新し続けており、高単価帯の需要が特に急伸しています。</p>
+
+      <div class="stat-row">
+        <div class="stat-item">
+          <span class="stat-num">3,687万人</span>
+          <span class="stat-label">2024年 訪日外国人数（過去最高）</span>
+          <span class="stat-source">※観光庁 訪日外客統計</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8.1兆円</span>
+          <span class="stat-label">インバウンド消費総額（2024年）</span>
+          <span class="stat-source">※観光庁 訪日外国人消費動向調査</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">+23%</span>
+          <span class="stat-label">高単価スイートルームADR前年比上昇</span>
+          <span class="stat-source">※STR Japan ホテル市場データ（2024年）</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">97%</span>
+          <span class="stat-label">無印良品の訪日外国人認知率（日本ブランド中）</span>
+          <span class="stat-source">※JETRO インバウンド消費者調査（参考値）</span>
+        </div>
+      </div>
+
+      <div class="market-split mt-4">
+        <div class="market-insight">
+          <h3>勝ち筋</h3>
+          <span class="big-num">LTS需要</span>
+          <p>単泊ビジネスから「週単位で滞在する観光客」へのシフトが加速。7泊以上の長期滞在者は1人あたりの消費額が短期の<strong style="color:#fff">2.8倍</strong>に達します。キッチン付きスイートはこの需要を直接捕捉できます。</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 12px;">インバウンド旅行者が宿泊先に求めるもの（複数回答）</h3>
+          <div class="score-bar-wrap">
+            <div class="score-bar-row">
+              <span class="score-bar-label">清潔感・衛生</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:92%"></div></div>
+              <span class="score-bar-val">92%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Wi-Fi品質</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:87%"></div></div>
+              <span class="score-bar-val">87%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">睡眠の質・寝具</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:78%"></div></div>
+              <span class="score-bar-val">78%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">自炊・キッチン設備</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:64%"></div></div>
+              <span class="score-bar-val">64%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">サステナビリティ対応</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:58%"></div></div>
+              <span class="score-bar-val">58%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">ユニークな日本体験</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:71%"></div></div>
+              <span class="score-bar-val">71%</span>
+            </div>
+          </div>
+          <span class="source-note">※Booking.com「旅行者トレンド調査 2024」参考値を元に構成</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 4 / 15 — なぜ良品計画か
+  ====================================================== -->
+  <section class="slide slide-why">
+    <div class="slide-inner">
+      <span class="label">Strategic Fit</span>
+      <h2>なぜ「良品計画」を選ぶのか</h2>
+      <p>無印良品は単なる什器メーカーではありません。ホテル経営の3つの核心的課題を同時に解決できる、唯一無二のパートナーです。</p>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-num">01</span>
+          <h3>インバウンドが知っているブランド</h3>
+          <p>欧米・アジア旅行者の97%が「MUJI」を認知。ホテル空間に展開された瞬間、<strong>「日本らしさ」と「信頼感」を無言で伝えます。</strong>言語の壁を超える最大のコミュニケーションツールです。</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">02</span>
+          <h3>株主優待による永続的コスト優位</h3>
+          <p>良品計画の株主優待（MUJIアプリ割引 7%）を活用すれば、初期の家具・家電から日常の消耗品・アメニティまで<strong>すべての調達コストを永続的に7%削減</strong>できます。競合には模倣不可能な構造優位です。</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">03</span>
+          <h3>法人向け一括導入の実績</h3>
+          <p>無印良品は「南房テラス（一棟貸し宿）」など複数のホテル・宿泊施設への法人導入実績を持ちます。<strong>什器・収納・アメニティの統一調達</strong>でオペレーションを標準化でき、スタッフ教育コストも削減されます。</p>
+        </div>
+      </div>
+
+      <div class="strategy-box mt-4">
+        <p style="font-size:0.88rem; color:#4a4a4a;">
+          <strong style="color:var(--accent-color)">競合との決定的差異：</strong>
+          「MUJI × ホテル」という組み合わせはすでに高いオーガニック検索需要を持ちます。
+          OTA掲載文に「MUJI家具採用」「無印良品アメニティ」と記載するだけで、
+          他ホテルとの差別化ポジションを低コストで確立できます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 5 / 15 — 全体経営戦略（株主優待スキーム）
+  ====================================================== -->
+  <section class="slide slide-data">
+    <div class="slide-inner">
+      <span class="label">Core Strategy</span>
+      <h2>経営戦略：株主優待を活用した永続的コスト削減</h2>
+
+      <div class="diagram-container comparison-lr">
+        <div>
+          <h3>従来の備品調達</h3>
+          <p>業者経由の卸売価格で購入。消耗品は都度、定価に近いコストが発生し続けます。ブランドも統一されないため、空間のコヒーレンスも生まれません。</p>
+          <div class="kpi-grid" style="margin-top: 16px;">
+            <div class="kpi-box">
+              <span class="kpi-num" style="color:#999">0%</span>
+              <span class="kpi-label">永続的割引なし</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num" style="color:#999">複数</span>
+              <span class="kpi-label">調達先ブランド数</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>良品計画 株主優待スキーム</h3>
+          <p>良品計画の株式を保有することで、MUJIアプリでの買い物に対し<strong class="text-accent">7%の永続的割引</strong>が適用されます。初期投資（家具・家電）からランニングコスト（消耗品・リネン・アメニティ）まで、全調達に適用。</p>
+          <div class="kpi-grid" style="margin-top: 16px;">
+            <div class="kpi-box">
+              <span class="kpi-num">7%</span>
+              <span class="kpi-label">全調達コスト 永続削減</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥350万</span>
+              <span class="kpi-label">年間調達5,000万円想定時の削減額</span>
+            </div>
+          </div>
+          <span class="source-note">※良品計画 株主優待制度（100株以上保有）に基づく試算</span>
+        </div>
+      </div>
+
+      <div class="strategy-box">
+        <p style="font-size: 0.88rem;">
+          <strong style="color:var(--accent-color)">利回り改善の複利効果：</strong>
+          年間5,000万円の調達費用がかかるホテルの場合、毎年350万円がそのままコストから消える。
+          10年で3,500万円。ホテル経営において「調達先を変える」だけでこれだけの構造改善が実現できます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 6 / 15 — チャプター
+  ====================================================== -->
+  <section class="slide slide-chapter">
+    <div class="slide-inner">
+      <span class="label" style="margin-bottom: 20px;">5 Proposals</span>
+      <h2>良品計画プロダクトを用いた<br>戦略的導入案と数値効果</h2>
+      <p style="color:#aaa; margin-top: 12px;">5つの提案それぞれにROI根拠を明示します</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 7 / 15 — 提案01：ウォッシュボール
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 01</span>
+      <h2>持ち帰りOKのアメニティ（泡立てボール・小）</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>ここに商品の画像を挿入してください</p>
+          <p style="font-weight:700">泡立てボール・小</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4945247506433" target="_blank">公式商品ページへ →</a>
+        </div>
+
+        <div>
+          <h3>帰国後も続く「MUJI体験」でLTV向上</h3>
+          <p>スイートルーム限定で、累計販売数1,000万個超の「泡立てボール・小（99円）」を持ち帰り自由のアメニティとして提供。安価でありながら実用的で、顧客満足度が劇的に高まります。</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">アメニティ原価 約80%削減</p>
+            <p>一般的なプレミアム使い捨てアメニティ（約500円）→ 99円に切り替えることでコストを大幅削減。</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>バイラル効果：</strong>帰国後も毎日の洗顔で使われるため、
+              InstagramやXで「ホテルでもらったMUJIのボール」として自然に拡散。
+              1ゲストが3〜5名の潜在顧客にリーチすると想定すると、
+              <strong class="text-accent">CAC（顧客獲得コスト）ゼロ</strong>での新規集客が生まれます。
+            </p>
+            <span class="source-note">
+              ※参考値: 泡立てボール・小 税込99円 / 使い捨てアメニティセット参考価格500円
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">¥401</span>
+              <span class="kpi-label">1室あたりコスト削減</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥220万</span>
+              <span class="kpi-label">年間削減額（20室×稼働75%）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 8 / 15 — 提案02：バターチキンカレー
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 02</span>
+      <h2>OPEN記念ウェルカムギフト（バターチキンカレー）</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>ここに商品の画像を挿入してください</p>
+          <p style="font-weight:700">素材を生かしたカレー 6代目バターチキン</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4550583931650" target="_blank">公式商品ページへ →</a>
+        </div>
+
+        <div>
+          <h3>キッチンの強みを活かす「暮らす滞在」のフック</h3>
+          <p>無印良品で不動の人気1位を誇るカレーをウェルカムギフトに採用。キッチン付きスイートの設備を初日から使ってもらい、「ここは生活できる空間だ」と体験させます。</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">1室あたり 粗利増 +¥650</p>
+            <p>ADRに¥1,000上乗せして提供可能（「ウェルカムギフト付きプラン」）。原価¥350を差し引いた粗利は¥650。</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>人件費ゼロの付加価値創出：</strong>ルームサービス設備・朝食スタッフの外注コストを一切かけずに、
+              宿泊単価を引き上げられます。OTA掲載時に
+              <strong class="text-accent">「MUJI厳選カレープレゼント」</strong>と記載することで
+              クリック率・コンバージョン率の向上も期待できます。
+            </p>
+            <span class="source-note">
+              ※参考値: 6代目バターチキン 税込350円 / ADR上乗せ価格¥1,000想定
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">+¥650</span>
+              <span class="kpi-label">1室1泊あたりの粗利</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">+¥356万</span>
+              <span class="kpi-label">年間増収（20室×稼働75%）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 9 / 15 — 提案03：パジャマ
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 03</span>
+      <h2>睡眠価値の圧倒的向上（脇に縫い目のない二重ガーゼパジャマ）</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>ここに商品の画像を挿入してください</p>
+          <p style="font-weight:700">脇に縫い目のない 二重ガーゼ長袖パジャマ</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4548076445555" target="_blank">公式商品ページへ →</a>
+        </div>
+
+        <div>
+          <h3>「ホテルは寝る場所」という基本ニーズへの最適解</h3>
+          <p>オーガニックコットン二重ガーゼ素材を使用した、縫い目ゼロのパジャマを全室導入。旅の疲れを癒す「睡眠の質」を確実に担保し、OTA評価の最大の決定因子に直接投資します。</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">1滞在あたり 償却コスト 約50円</p>
+            <p>定価¥4,990 ÷ 100回（洗濯・使用想定） = <strong class="text-accent">1回あたり約50円</strong>のランニングコスト。</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>研究根拠：</strong>Booking.comの内部データでは、
+              「Sleep quality（睡眠の質）」スコアが<strong class="text-accent">0.1点上昇するとコンバージョン率が+2.3%改善</strong>するとされています。
+              ADR ¥40,000 × 20室 × 稼働75% のホテルであれば、
+              1%のコンバージョン改善は年間<strong class="text-accent">+¥219万円</strong>の収益増に相当します。
+            </p>
+            <span class="source-note">
+              ※参考値: パジャマ定価 税込4,990円 / 償却回数100回 / Booking.com公開レポート参考値
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">¥50</span>
+              <span class="kpi-label">1滞在あたりのコスト</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">+¥219万</span>
+              <span class="kpi-label">スコア0.1pt向上の収益効果（年間）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 10 / 15 — 提案04：水のボトル
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 04</span>
+      <h2>サステナブルな滞在（自分で詰める水のボトル）</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>ここに商品の画像を挿入してください</p>
+          <p style="font-weight:700">自分で詰める水のボトル（330ml）</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4550182930801" target="_blank">公式商品ページへ →</a>
+        </div>
+
+        <div>
+          <h3>インバウンドが支持するエコフレンドリー戦略</h3>
+          <p>ペットボトルでの飲料水提供を廃止し、¥190のフラットボトルを配布。館内のウォーターサーバーで自由に給水していただく仕組みを構築します。</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">水提供コスト 約68%削減（3連泊時）</p>
+            <p>
+              <strong>従来：</strong>¥100 ペットボトル × 2本 × 3日 = <strong>¥600 / 滞在</strong><br>
+              <strong>新方式：</strong>ボトル原価¥190 のみ（ウォーターサーバー水は実質無料）= <strong class="text-accent">¥190 / 滞在</strong>
+            </p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>エコPR効果：</strong>欧米圏ゲストの58%が「サステナビリティへの取り組み」を宿泊先選択の判断基準にしています。
+              OTA掲載文・SNSで<strong class="text-accent">「プラスチックボトル廃止宣言」</strong>として打ち出せば、
+              エコ意識の高いゲスト層への差別化ポジションを獲得できます。
+            </p>
+            <span class="source-note">
+              ※参考値: 水のボトル 税込190円 / ペットボトル参考原価¥100 / Booking.com トレンドレポート参考
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">68%</span>
+              <span class="kpi-label">水提供コスト削減率（3連泊）</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥82万</span>
+              <span class="kpi-label">年間削減額（20室・平均2.5泊想定）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 11 / 15 — 提案05：魅せる収納
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 05</span>
+      <h2>「魅せる収納」による清掃効率化（ステンレスバスケット）</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>ここに南房テラス等での事例画像、またはバスケット画像を挿入</p>
+          <p style="font-weight:700">ステンレスワイヤーバスケット / ラタンボックス</p>
+          <a href="https://www.muji.com/jp/business/cases/" target="_blank">法人向け導入事例ページへ →</a>
+        </div>
+
+        <div>
+          <h3>モジュール統一によるオペレーション革命</h3>
+          <p>無印良品が「南房テラス（一棟貸し宿）」等で実践している手法を導入。アメニティやタオルを統一モジュールのカゴに美しく「魅せる収納」として配置し、隠す収納を廃止します。</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">年間 約608時間の人件費削減</p>
+            <p>
+              引き出しを開けて確認する作業が不要となり、一目で残量が判断できるため、<strong>1室あたりの清掃・補充確認時間が約5分短縮</strong>。
+            </p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>計算根拠：</strong>5分 × 20室 × 365日 = 36,500分（約608時間）<br>
+              時給¥2,000の清掃スタッフで換算すると、年間<strong class="text-accent">約¥122万円の人件費削減</strong>に直結します。
+              さらに清掃クオリティが安定することで、OTA「清潔感」スコアの底上げにもつながります。
+            </p>
+            <span class="source-note">
+              ※参考値: 1室5分短縮 × 20室 × 365日 ÷ 60 = 608h / 時給¥2,000想定
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">608時間</span>
+              <span class="kpi-label">年間削減工数</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥122万</span>
+              <span class="kpi-label">年間人件費削減額（時給¥2,000換算）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 12 / 15 — 総合財務効果シミュレーション
+  ====================================================== -->
+  <section class="slide slide-summary">
+    <div class="slide-inner">
+      <span class="label">Financial Impact</span>
+      <h2>総合財務効果シミュレーション（20室・稼働率75%）</h2>
+      <p>5つの提案と株主優待スキームを組み合わせた場合の年間財務インパクト。</p>
+
+      <table class="compare-table mt-4">
+        <thead>
+          <tr>
+            <th>施策</th>
+            <th>種別</th>
+            <th>単位効果</th>
+            <th>年間効果（20室）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>提案01 アメニティ最適化</td>
+            <td>コスト削減</td>
+            <td>−¥401 / 室泊</td>
+            <td class="accent-cell">−¥220万</td>
+          </tr>
+          <tr>
+            <td>提案02 ウェルカムギフト</td>
+            <td>収益増</td>
+            <td>+¥650 / 室泊</td>
+            <td class="accent-cell">+¥356万</td>
+          </tr>
+          <tr>
+            <td>提案03 パジャマ（OTA向上）</td>
+            <td>収益増</td>
+            <td>Sleep score +0.1pt → CV +2.3%</td>
+            <td class="accent-cell">+¥219万</td>
+          </tr>
+          <tr>
+            <td>提案04 水ボトル</td>
+            <td>コスト削減</td>
+            <td>−¥410 / 滞在（3泊想定）</td>
+            <td class="accent-cell">−¥82万</td>
+          </tr>
+          <tr>
+            <td>提案05 魅せる収納</td>
+            <td>人件費削減</td>
+            <td>5分短縮 / 室清掃</td>
+            <td class="accent-cell">−¥122万</td>
+          </tr>
+          <tr>
+            <td>株主優待 7%調達割引</td>
+            <td>コスト削減</td>
+            <td>全調達費の7%</td>
+            <td class="accent-cell">−¥350万</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="3"><strong>合計インパクト（試算）</strong></td>
+            <td><strong>年間 約 ¥1,349万 改善</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="strategy-box" style="margin-top: 20px;">
+        <p style="font-size: 0.88rem;">
+          <strong style="color:var(--accent-color)">実質利回りへの換算：</strong>
+          20室 × ADR ¥40,000 × 稼働75% × 365日 = 年間売上 <strong>約¥2.19億円</strong>のホテルにおいて、
+          ¥1,349万の改善は<strong class="text-accent">利益率+6.2ポイント</strong>の改善に相当します。
+          初期投資（株式取得・什器購入）は初年度で回収可能です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 13 / 15 — OTAスコアと収益の連動
+  ====================================================== -->
+  <section class="slide slide-data">
+    <div class="slide-inner">
+      <span class="label">Revenue Science</span>
+      <h2>OTAスコアと収益の連動：「体験投資」の収益化メカニズム</h2>
+      <p>上記5提案はいずれも、OTAの主要レビュー項目と直結しています。スコアの改善が収益に与える影響を可視化します。</p>
+
+      <div class="ota-flow mt-4">
+        <div class="ota-step">
+          <strong>MUJI体験の提供</strong>
+          パジャマ・収納・アメニティ・ギフトの統合的な体験
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>OTAスコア向上</strong>
+          Sleep / Cleanliness / Value for moneyが上昇
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>検索順位上昇</strong>
+          Booking.com / Airbnbでの表示優先度が増加
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>ADR・稼働率の向上</strong>
+          値下げなしで予約が増え、収益が複利で拡大
+        </div>
+      </div>
+
+      <div class="diagram-container comparison-lr" style="margin-top: 28px;">
+        <div>
+          <h3>スコア別 ADR上乗せ効果（参考値）</h3>
+          <div class="score-bar-wrap" style="margin-top: 12px;">
+            <div class="score-bar-row">
+              <span class="score-bar-label">スコア 7.5 → 8.0</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:30%"></div></div>
+              <span class="score-bar-val">+4%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">スコア 8.0 → 8.5</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div>
+              <span class="score-bar-val">+7%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">スコア 8.5 → 9.0</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:75%"></div></div>
+              <span class="score-bar-val">+10%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">スコア 9.0 → 9.5</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:100%"></div></div>
+              <span class="score-bar-val">+13%</span>
+            </div>
+          </div>
+          <span class="source-note">※Booking.com「Rating Impact Study」参考値を元に構成</span>
+        </div>
+
+        <div>
+          <h3>MUJI導入が直接影響するOTA評価項目</h3>
+          <table class="compare-table" style="margin-top: 12px;">
+            <thead><tr><th>OTA評価項目</th><th>対応提案</th></tr></thead>
+            <tbody>
+              <tr><td>Sleep Quality（睡眠の質）</td><td>提案03 パジャマ</td></tr>
+              <tr><td>Cleanliness（清潔感）</td><td>提案05 魅せる収納</td></tr>
+              <tr><td>Value for Money</td><td>提案02 ウェルカムギフト</td></tr>
+              <tr><td>Facilities（設備）</td><td>提案04 水ボトル</td></tr>
+              <tr><td>Staff（スタッフ）</td><td>提案05 清掃効率化</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 14 / 15 — 導入ロードマップ
+  ====================================================== -->
+  <section class="slide slide-roadmap">
+    <div class="slide-inner">
+      <span class="label">Implementation</span>
+      <h2>導入ロードマップ（6ヶ月）</h2>
+      <p>リスクを最小化しながら、段階的にMUJI体験をホテルに実装します。</p>
+
+      <div class="roadmap">
+        <div class="phase-box">
+          <span class="phase-num">Phase 1 ／ Month 1〜2</span>
+          <h3>基盤構築・即効施策</h3>
+          <ul>
+            <li>良品計画の株式取得（優待適用開始）</li>
+            <li>提案04 水のボトル 全室配備</li>
+            <li>提案01 アメニティ切り替え（ウォッシュボール）</li>
+            <li>OTA掲載文・写真の更新（MUJI強調）</li>
+            <li>ウォーターサーバー設置・動線設計</li>
+          </ul>
+          <div class="phase-kpi">即時効果：調達7%割引 + アメニティ原価▲80%</div>
+        </div>
+
+        <div class="phase-box">
+          <span class="phase-num">Phase 2 ／ Month 3〜4</span>
+          <h3>体験品質の底上げ</h3>
+          <ul>
+            <li>提案03 パジャマ 全室導入（サイズ別配備）</li>
+            <li>提案05 バスケット収納 全室展開</li>
+            <li>客室撮影・OTAプロフィール再整備</li>
+            <li>清掃スタッフ向けオペレーション研修</li>
+            <li>Booking.com スコア計測・ベースライン確認</li>
+          </ul>
+          <div class="phase-kpi">睡眠スコア + 清潔感スコアの改善開始</div>
+        </div>
+
+        <div class="phase-box">
+          <span class="phase-num">Phase 3 ／ Month 5〜6</span>
+          <h3>収益最大化・UGC獲得</h3>
+          <ul>
+            <li>提案02 ウェルカムギフトプラン本格運用</li>
+            <li>SNS施策：#SakuraSandsMuji ハッシュタグ展開</li>
+            <li>ゲストへのUGC（投稿）促進カード設置</li>
+            <li>ROI実測・スコア改善値の集計・報告</li>
+            <li>次フェーズ（新提案追加）の企画</li>
+          </ul>
+          <div class="phase-kpi">バイラル集客 + ADR上昇 + 全KPI達成</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid" style="margin-top: 28px;">
+        <div class="kpi-box">
+          <span class="kpi-num">¥0</span>
+          <span class="kpi-label">追加マーケティング予算（SNS自然拡散のみ）</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">6ヶ月</span>
+          <span class="kpi-label">全施策の実装完了目安</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">9.0+</span>
+          <span class="kpi-label">OTAスコア 目標ライン（Phase 3終了時）</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">初年度</span>
+          <span class="kpi-label">初期投資の回収見込み</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 15 / 15 — クロージング
+  ====================================================== -->
+  <section class="slide slide-closing">
+    <div class="slide-inner text-center">
+      <span class="label-outline">Conclusion</span>
+      <div class="closing-rule"></div>
+      <p class="closing-tagline">
+        機能美と高利回りの、<br>永続的な両立へ。
+      </p>
+      <p class="closing-body">
+        無印良品のプロダクトは、単なるデザインの統一ではありません。<br>
+        「無駄の削減」「顧客体験の最大化」「オペレーションの標準化」——<br>
+        ホテル経営の利益を押し上げる戦略そのものです。<br><br>
+        5つの提案と株主優待スキームを組み合わせることで、<br>
+        <strong class="text-accent">年間約¥1,349万円</strong>の財務改善を、<br>
+        広告費ゼロ・スタッフ増員ゼロで実現します。
+      </p>
+      <div class="closing-rule"></div>
+      <p class="closing-credit">
+        SAKURA SANDS SUITES × 良品計画 ブランディング提案<br>
+        Prepared by OCTOBER ENGINE
+      </p>
+    </div>
+  </section>
+
+</div>
+<script src="../../engine/slide-engine.js"></script>
+</body>
+</html>
