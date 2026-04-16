@@ -207,69 +207,121 @@
 
     .color-card {
       border-radius: 6px;
-      padding: 14px 14px 12px;
+      overflow: hidden;
       background: #fff;
       border: 1px solid #eee;
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: default;
     }
     .color-card:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
     }
 
-    .color-swatch-row {
+    /* 部屋写真 + カラーオーバーレイ */
+    .color-card-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .color-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7) brightness(1.05);
+    }
+    .color-card-photo .color-overlay {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: multiply;
+      opacity: 0.55;
+    }
+    /* ホバー時にオーバーレイを薄くして実写を見せる */
+    .color-card:hover .color-card-photo .color-overlay {
+      opacity: 0.3;
+    }
+    .color-card:hover .color-card-photo img {
+      filter: saturate(1) brightness(1);
+    }
+
+    /* 写真上のカラーネームバッジ */
+    .color-name-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
+      background: rgba(255,255,255,0.88);
+      border-radius: 3px;
+      padding: 3px 8px 3px 6px;
+      backdrop-filter: blur(4px);
     }
-    .color-swatch {
-      width: 36px;
-      height: 36px;
+    .color-name-badge .badge-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       flex-shrink: 0;
-      border: 1px solid rgba(0,0,0,0.06);
     }
-    .color-card-name {
+    .color-name-badge .badge-jp {
+      font-size: 0.75rem;
       font-weight: 700;
-      font-size: 0.88rem;
-      line-height: 1.3;
       color: #1a1a1a;
     }
-    .color-card-en {
-      font-size: 0.66rem;
-      color: #aaa;
-      letter-spacing: 0.08em;
+    .color-name-badge .badge-en {
+      font-size: 0.6rem;
+      color: #888;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
+
+    /* カード本文エリア */
+    .color-card-body {
+      padding: 10px 12px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
     .color-card-concept {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: #666;
       line-height: 1.5;
-      border-top: 1px solid #f0ece8;
-      padding-top: 7px;
     }
     .color-card-amenity {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--accent-color);
       font-weight: 600;
       display: flex;
       align-items: flex-start;
       gap: 4px;
       line-height: 1.4;
+      border-top: 1px solid #f0ece8;
+      padding-top: 6px;
     }
     .color-card-amenity::before {
       content: "▸";
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       margin-top: 2px;
       flex-shrink: 0;
     }
     .color-card-price {
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       color: #bbb;
       font-weight: 400;
     }
+
+    /* 後方互換（色ドット表示用、チャプタースライド） */
+    .color-swatch-row { display: flex; align-items: center; gap: 10px; }
+    .color-swatch {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .color-card-name { font-weight: 700; font-size: 0.88rem; line-height: 1.3; color: #1a1a1a; }
+    .color-card-en   { font-size: 0.66rem; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; }
 
     /* チャプタースライドの13色ドット */
     .color-dots-row {
@@ -1026,209 +1078,222 @@
 
         <!-- 01 桜色 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#f7d9d9"></div>
-            <div>
-              <div class="color-card-name">桜色</div>
-              <div class="color-card-en">Sakura · Kindness</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="Sakura Sands Suites 客室">
+            <div class="color-overlay" style="background:#f7d9d9"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#f7d9d9"></span>
+              <span class="badge-jp">桜色</span>
+              <span class="badge-en">Sakura</span>
             </div>
           </div>
-          <p class="color-card-concept">柔らかな歓迎。旅の始まりを包む優しいピンク。</p>
-          <div class="color-card-amenity">
-            泡立てボール・小（持ち帰り可）
-            <span class="color-card-price">¥99</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">柔らかな歓迎。旅の始まりを包む優しいピンク。</p>
+            <div class="color-card-amenity">泡立てボール・小（持ち帰り可）<span class="color-card-price">¥99</span></div>
           </div>
         </div>
 
         <!-- 02 撫子 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#eebbcb"></div>
-            <div>
-              <div class="color-card-name">撫子</div>
-              <div class="color-card-en">Nadeshiko · Tenderness</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#eebbcb"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#eebbcb"></span>
+              <span class="badge-jp">撫子</span>
+              <span class="badge-en">Nadeshiko</span>
             </div>
           </div>
-          <p class="color-card-concept">繊細さと慈しみ。日本の女性美に宿る丁寧さ。</p>
-          <div class="color-card-amenity">
-            敏感肌用薬用美白化粧水（ミニ）
-            <span class="color-card-price">¥290〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">繊細さと慈しみ。日本の女性美に宿る丁寧さ。</p>
+            <div class="color-card-amenity">敏感肌用薬用美白化粧水（ミニ）<span class="color-card-price">¥290〜</span></div>
           </div>
         </div>
 
         <!-- 03 鬱金 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#f8b500"></div>
-            <div>
-              <div class="color-card-name">鬱金</div>
-              <div class="color-card-en">Ukon · Energy</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#f8b500"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#f8b500"></span>
+              <span class="badge-jp">鬱金</span>
+              <span class="badge-en">Ukon</span>
             </div>
           </div>
-          <p class="color-card-concept">朝の光のような生命力。活動的な一日への後押し。</p>
-          <div class="color-card-amenity">
-            ハーブ＆ルイボスティーバッグ（5袋）
-            <span class="color-card-price">¥199〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">朝の光のような生命力。活動的な一日への後押し。</p>
+            <div class="color-card-amenity">ハーブ＆ルイボスティーバッグ（5袋）<span class="color-card-price">¥199〜</span></div>
           </div>
         </div>
 
         <!-- 04 萌黄 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#78a355"></div>
-            <div>
-              <div class="color-card-name">萌黄</div>
-              <div class="color-card-en">Moegi · Vitality</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#78a355"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#78a355"></span>
+              <span class="badge-jp">萌黄</span>
+              <span class="badge-en">Moegi</span>
             </div>
           </div>
-          <p class="color-card-concept">新緑のエネルギー。自然素材に帰る清々しさ。</p>
-          <div class="color-card-amenity">
-            オーガニックコットン フェイスタオル
-            <span class="color-card-price">¥990〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">新緑のエネルギー。自然素材に帰る清々しさ。</p>
+            <div class="color-card-amenity">オーガニックコットン フェイスタオル<span class="color-card-price">¥990〜</span></div>
           </div>
         </div>
 
         <!-- 05 常磐 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#007b43"></div>
-            <div>
-              <div class="color-card-name">常磐</div>
-              <div class="color-card-en">Tokiwa · Forest</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#007b43"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#007b43"></span>
+              <span class="badge-jp">常磐</span>
+              <span class="badge-en">Tokiwa</span>
             </div>
           </div>
-          <p class="color-card-concept">深い森の癒やし。都市の喧騒から完全に離れる。</p>
-          <div class="color-card-amenity">
-            ひのきの入浴剤（バスソルト）
-            <span class="color-card-price">¥490〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">深い森の癒やし。都市の喧騒から完全に離れる。</p>
+            <div class="color-card-amenity">ひのきの入浴剤（バスソルト）<span class="color-card-price">¥490〜</span></div>
           </div>
         </div>
 
         <!-- 06 浅葱 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#00a3af"></div>
-            <div>
-              <div class="color-card-name">浅葱</div>
-              <div class="color-card-en">Asagi · Sea</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#00a3af"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#00a3af"></span>
+              <span class="badge-jp">浅葱</span>
+              <span class="badge-en">Asagi</span>
             </div>
           </div>
-          <p class="color-card-concept">清流・海の透明感。サステナブルな暮らしを体現。</p>
-          <div class="color-card-amenity">
-            自分で詰める水のボトル（330ml）
-            <span class="color-card-price">¥190</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">清流・海の透明感。サステナブルな暮らしを体現。</p>
+            <div class="color-card-amenity">自分で詰める水のボトル（330ml）<span class="color-card-price">¥190</span></div>
           </div>
         </div>
 
         <!-- 07 瑠璃 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#274a78"></div>
-            <div>
-              <div class="color-card-name">瑠璃</div>
-              <div class="color-card-en">Ruri · Deep Sleep</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#274a78"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#274a78"></span>
+              <span class="badge-jp">瑠璃</span>
+              <span class="badge-en">Ruri</span>
             </div>
           </div>
-          <p class="color-card-concept">深夜の星空。最高の睡眠体験を設計する深い藍。</p>
-          <div class="color-card-amenity">
-            脇に縫い目のない二重ガーゼパジャマ
-            <span class="color-card-price">¥4,990</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">深夜の星空。最高の睡眠体験を設計する深い藍。</p>
+            <div class="color-card-amenity">脇に縫い目のない二重ガーゼパジャマ<span class="color-card-price">¥4,990</span></div>
           </div>
         </div>
 
         <!-- 08 菖蒲 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#884898"></div>
-            <div>
-              <div class="color-card-name">菖蒲</div>
-              <div class="color-card-en">Ayame · Meditation</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#884898"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#884898"></span>
+              <span class="badge-jp">菖蒲</span>
+              <span class="badge-en">Ayame</span>
             </div>
           </div>
-          <p class="color-card-concept">瞑想と精神性。心の雑音を静める深い紫の空間。</p>
-          <div class="color-card-amenity">
-            アロマストーン ＋ ラベンダー精油
-            <span class="color-card-price">¥990〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">瞑想と精神性。心の雑音を静める深い紫の空間。</p>
+            <div class="color-card-amenity">アロマストーン ＋ ラベンダー精油<span class="color-card-price">¥990〜</span></div>
           </div>
         </div>
 
         <!-- 09 鶸茶 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#c3d825"></div>
-            <div>
-              <div class="color-card-name">鶸茶</div>
-              <div class="color-card-en">Hiwacha · Clarity</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#c3d825"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#c3d825"></span>
+              <span class="badge-jp">鶸茶</span>
+              <span class="badge-en">Hiwacha</span>
             </div>
           </div>
-          <p class="color-card-concept">爽快な目覚め。思考をクリアにする鮮烈な黄緑。</p>
-          <div class="color-card-amenity">
-            グリーンルイボスティーバッグ（5袋）
-            <span class="color-card-price">¥199〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">爽快な目覚め。思考をクリアにする鮮烈な黄緑。</p>
+            <div class="color-card-amenity">グリーンルイボスティーバッグ（5袋）<span class="color-card-price">¥199〜</span></div>
           </div>
         </div>
 
         <!-- 10 灰桜 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#b19693"></div>
-            <div>
-              <div class="color-card-name">灰桜</div>
-              <div class="color-card-en">Haizakura · Subtlety</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#b19693"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#b19693"></span>
+              <span class="badge-jp">灰桜</span>
+              <span class="badge-en">Haizakura</span>
             </div>
           </div>
-          <p class="color-card-concept">消え入りそうな淡さ。本質だけを残したミニマル。</p>
-          <div class="color-card-amenity">
-            米ぬか保湿フェイスソープ（個包装）
-            <span class="color-card-price">¥350〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">消え入りそうな淡さ。本質だけを残したミニマル。</p>
+            <div class="color-card-amenity">米ぬか保湿フェイスソープ（個包装）<span class="color-card-price">¥350〜</span></div>
           </div>
         </div>
 
         <!-- 11 蜜柑 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#fbca4d"></div>
-            <div>
-              <div class="color-card-name">蜜柑</div>
-              <div class="color-card-en">Mikan · Warmth</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#fbca4d"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#fbca4d"></span>
+              <span class="badge-jp">蜜柑</span>
+              <span class="badge-en">Mikan</span>
             </div>
           </div>
-          <p class="color-card-concept">陽だまりの温もり。台所から旅の喜びが始まる。</p>
-          <div class="color-card-amenity">
-            バターチキンカレー（ウェルカムギフト）
-            <span class="color-card-price">¥350</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">陽だまりの温もり。台所から旅の喜びが始まる。</p>
+            <div class="color-card-amenity">バターチキンカレー（ウェルカムギフト）<span class="color-card-price">¥350</span></div>
           </div>
         </div>
 
         <!-- 12 団十郎茶 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#6c3524"></div>
-            <div>
-              <div class="color-card-name">団十郎茶</div>
-              <div class="color-card-en">Danjurocha · Craft</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#6c3524"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#6c3524"></span>
+              <span class="badge-jp">団十郎茶</span>
+              <span class="badge-en">Danjurocha</span>
             </div>
           </div>
-          <p class="color-card-concept">江戸歌舞伎の深い茶。職人精神と伝統の美学。</p>
-          <div class="color-card-amenity">
-            ステンレスワイヤーバスケット（魅せる収納）
-            <span class="color-card-price">¥990〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">江戸歌舞伎の深い茶。職人精神と伝統の美学。</p>
+            <div class="color-card-amenity">ステンレスワイヤーバスケット（魅せる収納）<span class="color-card-price">¥990〜</span></div>
           </div>
         </div>
 
         <!-- 13 墨 -->
         <div class="color-card">
-          <div class="color-swatch-row">
-            <div class="color-swatch" style="background:#333333"></div>
-            <div>
-              <div class="color-card-name">墨</div>
-              <div class="color-card-en">Sumi · Silence</div>
+          <div class="color-card-photo">
+            <img src="room.png" alt="客室">
+            <div class="color-overlay" style="background:#333333"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#333333"></span>
+              <span class="badge-jp">墨</span>
+              <span class="badge-en">Sumi</span>
             </div>
           </div>
-          <p class="color-card-concept">すべてを削ぎ落とした「無」の境地。最上の静寂。</p>
-          <div class="color-card-amenity">
-            アロマキャンドル（チャコールウッドの香り）
-            <span class="color-card-price">¥790〜</span>
+          <div class="color-card-body">
+            <p class="color-card-concept">すべてを削ぎ落とした「無」の境地。最上の静寂。</p>
+            <div class="color-card-amenity">アロマキャンドル（チャコールウッドの香り）<span class="color-card-price">¥790〜</span></div>
           </div>
         </div>
 
