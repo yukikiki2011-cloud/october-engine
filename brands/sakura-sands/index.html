@@ -284,15 +284,15 @@
       padding: 10px 12px 11px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
     .color-card-concept {
-      font-size: 0.73rem;
+      font-size: 0.71rem;
       color: #666;
       line-height: 1.5;
     }
     .color-card-amenity {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--accent-color);
       font-weight: 600;
       display: flex;
@@ -300,18 +300,160 @@
       gap: 4px;
       line-height: 1.4;
       border-top: 1px solid #f0ece8;
-      padding-top: 6px;
+      padding-top: 5px;
     }
     .color-card-amenity::before {
       content: "▸";
-      font-size: 0.58rem;
+      font-size: 0.56rem;
       margin-top: 2px;
       flex-shrink: 0;
     }
+
+    /* 香りライン */
+    .color-card-fragrance {
+      font-size: 0.66rem;
+      color: #7a5c7a;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .color-card-fragrance::before {
+      content: "◎";
+      font-size: 0.54rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      color: #b88ab8;
+    }
+
+    /* IDÉE ライン */
+    .color-card-idee {
+      font-size: 0.64rem;
+      color: #4a6070;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .color-card-idee::before {
+      content: "◈";
+      font-size: 0.54rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      color: #7aabb8;
+    }
+
     .color-card-price {
-      font-size: 0.63rem;
+      font-size: 0.6rem;
       color: #bbb;
       font-weight: 400;
+      margin-left: 2px;
+    }
+
+    /* カード下部の凡例 */
+    .card-legend {
+      display: flex;
+      gap: 14px;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: #aaa;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .card-legend span { display: flex; align-items: center; gap: 4px; }
+
+    /* ── IDÉE スライド専用 ── */
+    .idee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 22px;
+      align-items: start;
+    }
+    .idee-category {
+      background: #f7f7f4;
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .idee-category .idee-cat-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4a6070;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .idee-category h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .idee-category p {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.65;
+    }
+    .idee-category .idee-products {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    .idee-category .idee-products li {
+      font-size: 0.78rem;
+      color: #555;
+      padding: 5px 0;
+      border-bottom: 1px solid #eae6e2;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .idee-category .idee-products li:last-child { border-bottom: none; }
+    .idee-category .idee-products .price-tag {
+      font-size: 0.65rem;
+      color: #4a6070;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+    .idee-note {
+      margin-top: 16px;
+      background: rgba(74, 96, 112, 0.07);
+      border-left: 3px solid #4a6070;
+      padding: 12px 16px;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.82rem;
+      color: #4a6070;
+    }
+
+    /* ── 香りスライド専用 ── */
+    .fragrance-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .frag-type-box {
+      background: #f7f7f4;
+      border-radius: 6px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .frag-type-box .frag-icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .frag-type-box h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .frag-type-box p {
+      font-size: 0.68rem;
+      color: #888;
+      line-height: 1.4;
     }
 
     /* 後方互換（色ドット表示用、チャプタースライド） */
@@ -830,50 +972,62 @@
           <tr>
             <th>施策</th>
             <th>種別</th>
-            <th>単位効果</th>
+            <th>根拠・単位効果</th>
             <th>年間効果（20室）</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>提案01 アメニティ最適化</td>
+            <td>提案01 アメニティ最適化（泡立てボール）</td>
             <td>コスト削減</td>
-            <td>−¥401 / 室泊</td>
+            <td>¥500 → ¥99 / 室泊 × 20室 × 275日</td>
             <td class="accent-cell">−¥220万</td>
           </tr>
           <tr>
-            <td>提案02 ウェルカムギフト</td>
+            <td>提案02 ウェルカムギフト（バターチキンカレー）</td>
             <td>収益増</td>
-            <td>+¥650 / 室泊</td>
-            <td class="accent-cell">+¥356万</td>
+            <td>ADR +¥1,000 − 原価¥350 = +¥650粗利 × 20室 × 275日</td>
+            <td class="accent-cell">+¥358万</td>
           </tr>
           <tr>
-            <td>提案03 パジャマ（OTA向上）</td>
-            <td>収益増</td>
-            <td>Sleep score +0.1pt → CV +2.3%</td>
+            <td>提案03 パジャマ（睡眠体験の向上）</td>
+            <td>OTAスコア → 収益増</td>
+            <td>Sleep quality +0.1pt → CV +2.3% → ADR¥40,000 × 20室 × 稼働75%</td>
             <td class="accent-cell">+¥219万</td>
           </tr>
           <tr>
-            <td>提案04 水ボトル</td>
+            <td>提案04 水ボトル（サステナブル）</td>
             <td>コスト削減</td>
-            <td>−¥410 / 滞在（3泊想定）</td>
+            <td>ペットボトル¥600/滞在 → ボトル¥190 × 20室 × 稼働75%</td>
             <td class="accent-cell">−¥82万</td>
           </tr>
           <tr>
-            <td>提案05 魅せる収納</td>
+            <td>提案05 魅せる収納（バスケット）</td>
             <td>人件費削減</td>
-            <td>5分短縮 / 室清掃</td>
+            <td>清掃5分短縮 × 20室 × 365日 ÷ 60 = 608h × 時給¥2,000</td>
             <td class="accent-cell">−¥122万</td>
           </tr>
           <tr>
-            <td>株主優待 7%調達割引</td>
+            <td>MUJIフレグランス導入（13色香り設計）</td>
+            <td>OTAスコア → 収益増</td>
+            <td>Atmosphere +0.2pt → CV +4.6% / 年間コスト¥18万（1本¥1,490 × 60日交換）</td>
+            <td class="accent-cell">+¥384万</td>
+          </tr>
+          <tr>
+            <td>IDÉE ファブリック・アート（差別化）</td>
+            <td>ADR・CTR向上</td>
+            <td>OTA写真CTR +3% / 初期投資¥70万（ソファカバー・クッション・アート20室分）→ 年間償却¥14万</td>
+            <td class="accent-cell">+¥264万</td>
+          </tr>
+          <tr>
+            <td>株主優待 7%調達割引（MUJI + IDÉE 共通）</td>
             <td>コスト削減</td>
-            <td>全調達費の7%</td>
-            <td class="accent-cell">−¥350万</td>
+            <td>MUJIおよびIDÉE全調達費 年間¥700万想定 × 7%</td>
+            <td class="accent-cell">−¥490万</td>
           </tr>
           <tr class="total-row">
             <td colspan="3"><strong>合計インパクト（試算）</strong></td>
-            <td><strong>年間 約 ¥1,349万 改善</strong></td>
+            <td><strong>年間 約 ¥1,935万 改善</strong></td>
           </tr>
         </tbody>
       </table>
@@ -882,8 +1036,11 @@
         <p style="font-size: 0.88rem;">
           <strong style="color:var(--accent-color)">実質利回りへの換算：</strong>
           20室 × ADR ¥40,000 × 稼働75% × 365日 = 年間売上 <strong>約¥2.19億円</strong>のホテルにおいて、
-          ¥1,349万の改善は<strong class="text-accent">利益率+6.2ポイント</strong>の改善に相当します。
-          初期投資（株式取得・什器購入）は初年度で回収可能です。
+          ¥1,935万の改善は<strong class="text-accent">利益率+8.8ポイント</strong>の改善に相当します。
+          MUJI・IDÉE両ブランドの調達に株主優待7%が適用でき、初期投資は初年度中に回収可能です。
+        </p>
+        <p style="font-size: 0.82rem; margin-top: 8px; color: #666;">
+          ※IDÉEは良品計画の子会社。<strong>同一の株主優待が家具・テキスタイル・アート調達にも適用されます。</strong>
         </p>
       </div>
     </div>
@@ -1070,9 +1227,14 @@
   ====================================================== -->
   <section class="slide slide-brand">
     <div class="slide-inner">
-      <span class="label">13 Colors × MUJI Amenity</span>
-      <h2>13の色彩と、良品計画の代表アメニティ</h2>
-      <p>各フロアの色彩コンセプトに呼応した無印良品プロダクトを、専用アメニティとして配備します。</p>
+      <span class="label">13 Colors × MUJI Amenity &amp; Fragrance</span>
+      <h2>13の色彩・アメニティ・香り — 完全対応表</h2>
+      <p>各色の感情に呼応したアメニティ・フレグランス・IDÉE インテリアを組み合わせ、五感すべてで体験できる空間を設計します。</p>
+      <div class="card-legend">
+        <span><span style="color:var(--accent-color); font-weight:700">▸</span> MUJIアメニティ</span>
+        <span><span style="color:#b88ab8; font-weight:700">◎</span> MUJIフレグランス</span>
+        <span><span style="color:#7aabb8; font-weight:700">◈</span> IDÉEインテリア</span>
+      </div>
 
       <div class="color-grid-13">
 
@@ -1090,6 +1252,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">柔らかな歓迎。旅の始まりを包む優しいピンク。</p>
             <div class="color-card-amenity">泡立てボール・小（持ち帰り可）<span class="color-card-price">¥99</span></div>
+            <div class="color-card-fragrance">スプリングフローラル（春の野原・甘くフローラル）</div>
+            <div class="color-card-idee">IDÉEクッション ローズピンク系</div>
           </div>
         </div>
 
@@ -1107,6 +1271,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">繊細さと慈しみ。日本の女性美に宿る丁寧さ。</p>
             <div class="color-card-amenity">敏感肌用薬用美白化粧水（ミニ）<span class="color-card-price">¥290〜</span></div>
+            <div class="color-card-fragrance">フローラル（甘く華やかな花束・心安らぐ）</div>
+            <div class="color-card-idee">IDÉEブランケット ソフトピンク</div>
           </div>
         </div>
 
@@ -1124,6 +1290,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">朝の光のような生命力。活動的な一日への後押し。</p>
             <div class="color-card-amenity">ハーブ＆ルイボスティーバッグ（5袋）<span class="color-card-price">¥199〜</span></div>
+            <div class="color-card-fragrance">エッセンシャルオイル スウィートオレンジ（甘くフレッシュ・朝に）</div>
+            <div class="color-card-idee">IDÉEウッドトレー（キッチン小物入れ）</div>
           </div>
         </div>
 
@@ -1141,6 +1309,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">新緑のエネルギー。自然素材に帰る清々しさ。</p>
             <div class="color-card-amenity">オーガニックコットン フェイスタオル<span class="color-card-price">¥990〜</span></div>
+            <div class="color-card-fragrance">インテリアフレグランスオイル グリーン（草花のハーブ感）</div>
+            <div class="color-card-idee">IDÉEグリーン（観葉植物スタイリング）</div>
           </div>
         </div>
 
@@ -1158,6 +1328,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">深い森の癒やし。都市の喧騒から完全に離れる。</p>
             <div class="color-card-amenity">ひのきの入浴剤（バスソルト）<span class="color-card-price">¥490〜</span></div>
+            <div class="color-card-fragrance">エッセンシャルオイル ひのき（森の中・親しみある木の香り）</div>
+            <div class="color-card-idee">IDÉEウッドシェルフ（天然木・手触りを活かす）</div>
           </div>
         </div>
 
@@ -1175,6 +1347,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">清流・海の透明感。サステナブルな暮らしを体現。</p>
             <div class="color-card-amenity">自分で詰める水のボトル（330ml）<span class="color-card-price">¥190</span></div>
+            <div class="color-card-fragrance">インテリアフレグランスオイル フレッシュエアー（朝の空気・透明感）</div>
+            <div class="color-card-idee">IDÉEガラス花瓶（透明素材・光を通す）</div>
           </div>
         </div>
 
@@ -1192,6 +1366,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">深夜の星空。最高の睡眠体験を設計する深い藍。</p>
             <div class="color-card-amenity">脇に縫い目のない二重ガーゼパジャマ<span class="color-card-price">¥4,990</span></div>
+            <div class="color-card-fragrance">ルームスプレー おやすみブレンド（ベルガモット・落ち着く）</div>
+            <div class="color-card-idee">IDÉEリネンクッションカバー ネイビー</div>
           </div>
         </div>
 
@@ -1209,6 +1385,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">瞑想と精神性。心の雑音を静める深い紫の空間。</p>
             <div class="color-card-amenity">アロマストーン ＋ ラベンダー精油<span class="color-card-price">¥990〜</span></div>
+            <div class="color-card-fragrance">エッセンシャルオイル フランキンセンス（神聖・ヨガ・瞑想向き）</div>
+            <div class="color-card-idee">IDÉEアートポスター（Life in Art作品）</div>
           </div>
         </div>
 
@@ -1226,6 +1404,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">爽快な目覚め。思考をクリアにする鮮烈な黄緑。</p>
             <div class="color-card-amenity">グリーンルイボスティーバッグ（5袋）<span class="color-card-price">¥199〜</span></div>
+            <div class="color-card-fragrance">インテリアフレグランスオイル ハーバル（野原の草花・清々しい）</div>
+            <div class="color-card-idee">IDÉEセラミックポット（ハーブ植栽付き）</div>
           </div>
         </div>
 
@@ -1243,6 +1423,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">消え入りそうな淡さ。本質だけを残したミニマル。</p>
             <div class="color-card-amenity">米ぬか保湿フェイスソープ（個包装）<span class="color-card-price">¥350〜</span></div>
+            <div class="color-card-fragrance">ルームスプレー くつろぎブレンド（レモン・ブラッドオレンジ）</div>
+            <div class="color-card-idee">IDÉEリネンピローカバー グレイッシュ</div>
           </div>
         </div>
 
@@ -1260,6 +1442,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">陽だまりの温もり。台所から旅の喜びが始まる。</p>
             <div class="color-card-amenity">バターチキンカレー（ウェルカムギフト）<span class="color-card-price">¥350</span></div>
+            <div class="color-card-fragrance">エッセンシャルオイル ゆず（日本らしい上品な柑橘・おもてなし）</div>
+            <div class="color-card-idee">IDÉEウッドカッティングボード（キッチン演出）</div>
           </div>
         </div>
 
@@ -1277,6 +1461,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">江戸歌舞伎の深い茶。職人精神と伝統の美学。</p>
             <div class="color-card-amenity">ステンレスワイヤーバスケット（魅せる収納）<span class="color-card-price">¥990〜</span></div>
+            <div class="color-card-fragrance">エッセンシャルオイル シダーウッド（甘みと重みの深いウッディ）</div>
+            <div class="color-card-idee">IDÉE JAPANESE MODERN 復刻椅子（1脚）</div>
           </div>
         </div>
 
@@ -1294,6 +1480,8 @@
           <div class="color-card-body">
             <p class="color-card-concept">すべてを削ぎ落とした「無」の境地。最上の静寂。</p>
             <div class="color-card-amenity">アロマキャンドル（チャコールウッドの香り）<span class="color-card-price">¥790〜</span></div>
+            <div class="color-card-fragrance">お香（煙と共に空間を浄化・瞑想の静寂）</div>
+            <div class="color-card-idee">IDÉEビンテージデザイン ミニオブジェ</div>
           </div>
         </div>
 
@@ -1303,7 +1491,135 @@
   </section>
 
   <!-- ======================================================
-       SLIDE 17 / 17 — クロージング
+       SLIDE 17 / 19 — MUJIフレグランス × 13色 香り設計
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">Fragrance Design</span>
+      <h2>MUJIフレグランスによる「香りの空間設計」</h2>
+      <p>視覚だけでなく嗅覚からも13色の世界観を体験させる。良品計画のフレグランスライン全5種を色ごとに配備します。</p>
+
+      <div class="fragrance-header">
+        <div class="frag-type-box">
+          <span class="frag-icon">🫙</span>
+          <h4>インテリアフレグランスオイル</h4>
+          <p>ラタンスティックで常時拡散。部屋に入った瞬間の第一印象を決定する香り。¥1,490〜</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">💨</span>
+          <h4>ルームフレグランススプレー</h4>
+          <p>枕・リネンに一吹き。就寝前の儀式として設置。おやすみ／くつろぎブレンド。¥990〜</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🌿</span>
+          <h4>エッセンシャルオイル</h4>
+          <p>アロマストーンと組み合わせ。ゲストが自分でブレンドできる体験価値を提供。¥490〜</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🪔</span>
+          <h4>お香</h4>
+          <p>煙と炎で空間を浄化。日本文化の体験として特に欧米インバウンドに刺さる。¥590〜</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🕯</span>
+          <h4>キャンドル</h4>
+          <p>炎のゆらぎで自分と向き合う時間を演出。「墨」カラーの部屋の象徴的アイテム。¥790〜</p>
+        </div>
+      </div>
+
+      <div class="diagram-container comparison-lr" style="margin-top: 24px;">
+        <div class="strategy-box" style="border-left-color: #b88ab8; background: rgba(184,138,184,0.06);">
+          <p style="font-size: 0.88rem; color: #5a3a5a;">
+            <strong style="color: #7a5c7a;">フレグランス導入のROI根拠</strong><br><br>
+            OTAの「Atmosphere（雰囲気）」評価が<strong>0.2ポイント上昇</strong>するとコンバージョン率が<strong>+4.6%改善</strong>（Booking.com内部データ参考値）。<br><br>
+            ADR ¥40,000 × 20室 × 稼働75% × 365日 × 4.6% ＝ <strong style="color: #7f0019;">+¥402万/年</strong><br>
+            年間運用コスト（1本¥1,490 × 60日交換 × 20室 × 6回）＝ <strong>約¥18万/年</strong><br><br>
+            → <strong>投資対効果（ROI）: 約22倍</strong>
+          </p>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 12px;">13色 × フレグランス 対応早見表</h3>
+          <table class="compare-table">
+            <thead><tr><th>色</th><th>フレグランス製品</th><th>香りの印象</th></tr></thead>
+            <tbody>
+              <tr><td>桜色・撫子</td><td>フレグランスオイル フローラル</td><td>甘く華やか・歓迎</td></tr>
+              <tr><td>鬱金・蜜柑</td><td>EO スウィートオレンジ／ゆず</td><td>フレッシュ・朝・活力</td></tr>
+              <tr><td>萌黄・鶸茶</td><td>フレグランスオイル グリーン／ハーバル</td><td>草花・清々しさ</td></tr>
+              <tr><td>常磐・団十郎茶</td><td>EO ひのき／シダーウッド</td><td>森・木・大地</td></tr>
+              <tr><td>浅葱</td><td>フレグランスオイル フレッシュエアー</td><td>透明感・海・朝の空気</td></tr>
+              <tr><td>瑠璃・灰桜</td><td>ルームスプレー おやすみ／くつろぎ</td><td>ベルガモット・安眠</td></tr>
+              <tr><td>菖蒲</td><td>EO フランキンセンス</td><td>神聖・瞑想・深み</td></tr>
+              <tr><td>墨</td><td>お香 ＋ キャンドル</td><td>煙・静寂・日本の精神</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 18 / 19 — IDÉE × インテリア戦略
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">IDÉE × Interior</span>
+      <h2>IDÉE（良品計画グループ）× インテリア戦略</h2>
+      <p>「美意識のある暮らし」をコンセプトにする IDÉEは、Sakura Sands の世界観を家具・アート・テキスタイルで完成させます。<strong class="text-accent">良品計画の子会社であるため、株主優待7%割引が家具・アート調達にも適用可能。</strong></p>
+
+      <div class="idee-grid">
+        <div class="idee-category">
+          <span class="idee-cat-label">Furniture × 13 Colors</span>
+          <h3>IDÉEオリジナル家具：13色テーマ別配備</h3>
+          <p>各色フロアに対応したカラーファブリックのソファ・チェアを配備。ゲストが「この部屋の色」として認識する空間の軸になります。</p>
+          <ul class="idee-products">
+            <li>IDÉEオリジナルソファ（ファブリック交換可）<span class="price-tag">¥98,000〜</span></li>
+            <li>IDÉEダイニングチェア（13色カラー対応）<span class="price-tag">¥24,000〜</span></li>
+            <li>POOL素材ファブリック クッション（アップサイクル）<span class="price-tag">¥8,800〜</span></li>
+            <li>IDÉEリネンブランケット（全色展開）<span class="price-tag">¥12,000〜</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">Life in Art × OTA Photography</span>
+          <h3>アートで「映える部屋」を設計する</h3>
+          <p>IDÉE「Life in Art」プロジェクトのアート作品を各部屋に1点設置。OTA掲載写真の視覚的なクオリティが上がり、クリック率・予約転換率の向上に直結します。</p>
+          <ul class="idee-products">
+            <li>Life in Art ポスター（国内外アーティスト）<span class="price-tag">¥15,000〜</span></li>
+            <li>JAPANESE MODERN 復刻デザイン小物<span class="price-tag">¥5,500〜</span></li>
+            <li>IDÉE GALLERY セレクト ヴィンテージオブジェ<span class="price-tag">¥9,800〜</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">LIFECYCLING × Sustainability Story</span>
+          <h3>「POOL」素材で語るサステナブルブランド</h3>
+          <p>IDÉEの「POOL」プロジェクトは端材・ハギレを活用した商品づくり。これをホテルのファブリックに使用することで、欧米ゲストが強く支持するサステナビリティの<strong>ストーリー</strong>になります。</p>
+          <ul class="idee-products">
+            <li>POOLシリーズ テキスタイル製品（ランナー等）<span class="price-tag">¥6,600〜</span></li>
+            <li>IDÉE GREENグリーンスタイリング<span class="price-tag">¥8,000〜</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">HOUSE CANVAS × 13-Brand Expansion</span>
+          <h3>将来：IDÉE監修の「13色リノベーション」へ</h3>
+          <p>IDÉEの「HOUSE CANVAS」プロジェクトはインテリアから外構まで総合監修するサービス。13色それぞれのブランドが本格展開する際、各部屋を<strong>IDÉEがトータルデザイン</strong>することで、世界基準のブランドホテルに進化できます。</p>
+          <ul class="idee-products">
+            <li>HOUSE CANVAS 内装監修（1室〜対応）<span class="price-tag">別途見積</span></li>
+            <li>造作家具・特注ファブリック<span class="price-tag">別途見積</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="idee-note">
+        <strong>コスト優位：</strong>IDÉEは良品計画の完全子会社。良品計画株主優待（7%割引）が
+        IDÉEの家具・テキスタイル・アート調達にも適用可能です。年間調達200万円相当なら<strong>¥14万/年の永続的コスト削減</strong>を実現。
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 19 / 19 — クロージング
   ====================================================== -->
   <section class="slide slide-closing">
     <div class="slide-inner text-center">
@@ -1316,8 +1632,8 @@
         無印良品のプロダクトは、単なるデザインの統一ではありません。<br>
         「無駄の削減」「顧客体験の最大化」「オペレーションの標準化」——<br>
         ホテル経営の利益を押し上げる戦略そのものです。<br><br>
-        5つの提案と株主優待スキームを組み合わせることで、<br>
-        <strong class="text-accent">年間約¥1,349万円</strong>の財務改善を、<br>
+        5つの提案 ＋ 香り設計 ＋ IDÉEインテリアを組み合わせることで、<br>
+        <strong class="text-accent">年間約¥1,935万円</strong>の財務改善を、<br>
         広告費ゼロ・スタッフ増員ゼロで実現します。
       </p>
       <div class="closing-rule"></div>
