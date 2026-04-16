@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Sands Suites × MUJI (Ryohin Keikaku) — Branding Proposal</title>
+  <link rel="stylesheet" href="../../engine/slide-engine.css">
+  <link rel="stylesheet" href="../../theme/default-theme.css">
+  <style>
+    :root {
+      --accent-color: #7f0019; /* MUJI Red */
+      --nav-color: #7f0019;
+    }
+
+    .text-accent   { color: var(--accent-color); font-weight: bold; }
+    .mt-4          { margin-top: 1rem; }
+    .mb-2          { margin-bottom: 0.5rem; }
+    .text-center   { text-align: center; }
+
+    /* Image placeholders */
+    .img-placeholder {
+      width: 100%;
+      height: 260px;
+      background-color: #f5f5f2;
+      border: 2px dashed #d0cdc8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #888;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      padding: 14px;
+      gap: 6px;
+    }
+    .img-placeholder a {
+      color: var(--accent-color);
+      text-decoration: underline;
+      word-break: break-all;
+      font-size: 0.75rem;
+      margin-top: 6px;
+    }
+
+    /* Strategy highlight box */
+    .strategy-box {
+      background-color: rgba(127, 0, 25, 0.05);
+      border-left: 4px solid var(--accent-color);
+      padding: 16px 18px;
+      margin-top: 14px;
+      border-radius: 0 4px 4px 0;
+    }
+    .strategy-num {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .source-note {
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* Title slide */
+    .slide-title .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: #b07070;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .slide-title p {
+      color: #b0aba6;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    /* Brand spec table */
+    .brand-spec {
+      background: #f7f7f4;
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-top: 20px;
+      font-size: 0.88rem;
+    }
+    .brand-spec table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .brand-spec td {
+      padding: 7px 0;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+    .brand-spec td:first-child {
+      color: #999;
+      font-size: 0.78rem;
+      width: 160px;
+      padding-right: 16px;
+    }
+    .brand-spec tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Market slide 2-pane */
+    .market-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 24px;
+      align-items: start;
+    }
+    .market-insight {
+      background: #1a1a1a;
+      color: #f5f5f0;
+      border-radius: 4px;
+      padding: 22px 24px;
+    }
+    .market-insight h3 {
+      color: #b07070;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .market-insight p {
+      color: #ccc;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .market-insight .big-num {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* OTA score bar */
+    .score-bar-wrap { margin-top: 16px; }
+    .score-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .score-bar-label { font-size: 0.8rem; color: #666; width: 180px; flex-shrink: 0; }
+    .score-bar-bg {
+      flex: 1;
+      height: 12px;
+      background: #eee;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .score-bar-fill {
+      height: 100%;
+      background: var(--accent-color);
+      border-radius: 6px;
+    }
+    .score-bar-val { font-size: 0.8rem; font-weight: 700; color: var(--accent-color); width: 60px; text-align: right; }
+
+    /* Closing */
+    .closing-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--accent-color);
+      margin: 28px auto;
+    }
+    .closing-tagline {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--accent-color);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+    .closing-body {
+      font-size: 1rem;
+      color: #666;
+      line-height: 2;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .closing-credit {
+      margin-top: 36px;
+      font-size: 0.72rem;
+      color: #ccc;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 900px) {
+      .market-split { grid-template-columns: 1fr; }
+    }
+
+    /* 13-color card grid */
+    .color-grid-13 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .color-card {
+      border-radius: 6px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: default;
+    }
+    .color-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+
+    /* Room photo + color overlay */
+    .color-card-photo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+    .color-card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7) brightness(1.05);
+    }
+    .color-card-photo .color-overlay {
+      position: absolute;
+      inset: 0;
+      mix-blend-mode: multiply;
+      opacity: 0.55;
+    }
+    .color-card:hover .color-card-photo .color-overlay {
+      opacity: 0.3;
+    }
+    .color-card:hover .color-card-photo img {
+      filter: saturate(1) brightness(1);
+    }
+
+    /* Color name badge on photo */
+    .color-name-badge {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.88);
+      border-radius: 3px;
+      padding: 3px 8px 3px 6px;
+      backdrop-filter: blur(4px);
+    }
+    .color-name-badge .badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .color-name-badge .badge-jp {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .color-name-badge .badge-en {
+      font-size: 0.6rem;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* Card body */
+    .color-card-body {
+      padding: 10px 12px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .color-card-concept {
+      font-size: 0.71rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    .color-card-amenity {
+      font-size: 0.68rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+      border-top: 1px solid #f0ece8;
+      padding-top: 5px;
+    }
+    .color-card-amenity::before {
+      content: "▸";
+      font-size: 0.56rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Fragrance line */
+    .color-card-fragrance {
+      font-size: 0.66rem;
+      color: #7a5c7a;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .color-card-fragrance::before {
+      content: "◎";
+      font-size: 0.54rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      color: #b88ab8;
+    }
+
+    /* IDÉE line */
+    .color-card-idee {
+      font-size: 0.64rem;
+      color: #4a6070;
+      font-weight: 500;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      line-height: 1.4;
+    }
+    .color-card-idee::before {
+      content: "◈";
+      font-size: 0.54rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      color: #7aabb8;
+    }
+
+    .color-card-price {
+      font-size: 0.6rem;
+      color: #bbb;
+      font-weight: 400;
+      margin-left: 2px;
+    }
+
+    /* Card legend */
+    .card-legend {
+      display: flex;
+      gap: 14px;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: #aaa;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .card-legend span { display: flex; align-items: center; gap: 4px; }
+
+    /* IDÉE slide */
+    .idee-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 22px;
+      align-items: start;
+    }
+    .idee-category {
+      background: #f7f7f4;
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .idee-category .idee-cat-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4a6070;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .idee-category h3 {
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .idee-category p {
+      font-size: 0.82rem;
+      color: #666;
+      line-height: 1.65;
+    }
+    .idee-category .idee-products {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    .idee-category .idee-products li {
+      font-size: 0.78rem;
+      color: #555;
+      padding: 5px 0;
+      border-bottom: 1px solid #eae6e2;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .idee-category .idee-products li:last-child { border-bottom: none; }
+    .idee-category .idee-products .price-tag {
+      font-size: 0.65rem;
+      color: #4a6070;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+    .idee-note {
+      margin-top: 16px;
+      background: rgba(74, 96, 112, 0.07);
+      border-left: 3px solid #4a6070;
+      padding: 12px 16px;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.82rem;
+      color: #4a6070;
+    }
+
+    /* Fragrance slide */
+    .fragrance-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .frag-type-box {
+      background: #f7f7f4;
+      border-radius: 6px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .frag-type-box .frag-icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .frag-type-box h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .frag-type-box p {
+      font-size: 0.68rem;
+      color: #888;
+      line-height: 1.4;
+    }
+
+    /* Color swatch (chapter slides) */
+    .color-swatch-row { display: flex; align-items: center; gap: 10px; }
+    .color-swatch {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .color-card-name { font-weight: 700; font-size: 0.88rem; line-height: 1.3; color: #1a1a1a; }
+    .color-card-en   { font-size: 0.66rem; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* 13-color dots on chapter slide */
+    .color-dots-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .color-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .color-grid-13 { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .color-grid-13 { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="slide-deck">
+
+  <!-- ======================================================
+       SLIDE 1 / 19 — Title
+  ====================================================== -->
+  <section class="slide slide-title">
+    <div class="slide-inner">
+      <span class="eyebrow">Sakura Sands Suites Hotel — Brand Proposal</span>
+      <h1>"This is Enough." —<br>The Philosophy That Drives<br>Premium Yields and True Luxury.</h1>
+      <p>Achieving High Occupancy &amp; Low-Cost Operations<br>Through MUJI (Ryohin Keikaku) Products</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 2 / 19 — Brand Identity
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">Brand Identity</span>
+      <h2>What is Sakura Sands Suites?</h2>
+      <p>"Sakura Sands" — A concept hotel that layers Japan's aesthetic sensibility with the natural, enveloping warmth of a sandy shore.<br>
+         We deliver the "living-like-a-local" experience sought by affluent inbound travelers, at a rational cost.</p>
+
+      <div class="brand-pillars">
+        <div class="pillar">
+          <span class="pillar-en">Live</span>
+          <h3>Live-In Stay</h3>
+          <p>Full kitchen &amp; in-room laundry. Designed for Long-Term Stays (LTS) of 3+ nights.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-en">Simple</span>
+          <h3>The Art of Subtraction</h3>
+          <p>Space stripped of excess ornamentation, faithful to material and function. Perfect alignment with MUJI philosophy.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-en">Return</span>
+          <h3>Designed for Return Visits</h3>
+          <p>Amenity design that extends the "MUJI experience" long after departure. Generates word-of-mouth and repeat bookings simultaneously.</p>
+        </div>
+      </div>
+
+      <div class="brand-spec">
+        <table>
+          <tr><td>Target Guest</td><td>Affluent inbound travelers from Europe, Australia &amp; East Asia (ages 35–55)</td></tr>
+          <tr><td>Concept</td><td>"One Week Living in Japan" — LTS (Long-Term Stay) Suites</td></tr>
+          <tr><td>Target ADR</td><td>¥35,000–50,000 / night (Suite rooms)</td></tr>
+          <tr><td>Target Occupancy</td><td>75% annual target / OTA score 9.0+ maintained</td></tr>
+          <tr><td>Scale</td><td>20 rooms (scalable design, expandable to 50 rooms)</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 3 / 19 — Market Context
+  ====================================================== -->
+  <section class="slide slide-market">
+    <div class="slide-inner">
+      <span class="label">Market Context</span>
+      <h2>Market Overview: Inbound Tourism — Today and Tomorrow</h2>
+      <p>Japan's inbound market continues to set record highs, with demand in the premium segment surging rapidly.</p>
+
+      <div class="stat-row">
+        <div class="stat-item">
+          <span class="stat-num">36.87M</span>
+          <span class="stat-label">Inbound visitors to Japan in 2024 (all-time record)</span>
+          <span class="stat-source">※ Japan Tourism Agency — Visitor Statistics</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">¥8.1T</span>
+          <span class="stat-label">Total inbound consumption in Japan (2024)</span>
+          <span class="stat-source">※ JTA — Inbound Consumer Expenditure Survey</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">+23%</span>
+          <span class="stat-label">Premium suite ADR growth YoY (2024)</span>
+          <span class="stat-source">※ STR Japan Hotel Market Data (2024)</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">97%</span>
+          <span class="stat-label">MUJI brand recognition among inbound tourists (among Japanese brands)</span>
+          <span class="stat-source">※ JETRO Inbound Consumer Survey (reference value)</span>
+        </div>
+      </div>
+
+      <div class="market-split mt-4">
+        <div class="market-insight">
+          <h3>The Winning Strategy</h3>
+          <span class="big-num">LTS Demand</span>
+          <p>The shift from single-night business stays to "week-long tourist stays" is accelerating. Long-stay guests (7+ nights) spend <strong style="color:#fff">2.8×</strong> more per person than short-stay visitors. Kitchen-equipped suites are ideally positioned to capture this demand directly.</p>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 12px;">What Inbound Guests Prioritize When Choosing Accommodation (multi-select)</h3>
+          <div class="score-bar-wrap">
+            <div class="score-bar-row">
+              <span class="score-bar-label">Cleanliness / Hygiene</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:92%"></div></div>
+              <span class="score-bar-val">92%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Wi-Fi Quality</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:87%"></div></div>
+              <span class="score-bar-val">87%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Sleep Quality / Bedding</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:78%"></div></div>
+              <span class="score-bar-val">78%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Self-Catering / Kitchen</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:64%"></div></div>
+              <span class="score-bar-val">64%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Sustainability Practices</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:58%"></div></div>
+              <span class="score-bar-val">58%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Unique Japanese Experience</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:71%"></div></div>
+              <span class="score-bar-val">71%</span>
+            </div>
+          </div>
+          <span class="source-note">※ Based on Booking.com "Travel Trends Survey 2024" reference values</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 4 / 19 — Why MUJI
+  ====================================================== -->
+  <section class="slide slide-why">
+    <div class="slide-inner">
+      <span class="label">Strategic Fit</span>
+      <h2>Why Choose MUJI (Ryohin Keikaku)?</h2>
+      <p>MUJI is far more than a furniture supplier. It is a uniquely positioned partner that simultaneously resolves the three core challenges of hotel management.</p>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-num">01</span>
+          <h3>A Brand Every Inbound Guest Already Knows</h3>
+          <p>97% of travelers from Europe, Asia, and Australia recognize "MUJI." The moment MUJI products fill a hotel room, they silently convey <strong>"authenticity" and "trustworthiness"</strong> — the most powerful communication tool that transcends every language barrier.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">02</span>
+          <h3>Perpetual Cost Advantage via Shareholder Benefits</h3>
+          <p>By holding Ryohin Keikaku shares, the 7% MUJI App shareholder discount applies to everything — from initial furniture and appliances to ongoing consumables and amenities. A <strong>permanent 7% reduction across all procurement costs</strong> — a structural advantage no competitor can replicate.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-num">03</span>
+          <h3>Proven Track Record in Bulk Corporate Orders</h3>
+          <p>MUJI has a documented history of corporate rollouts across multiple lodging facilities, including "Minami-Boso Terrace." <strong>Standardized procurement of fixtures, storage, and amenities</strong> streamlines operations and reduces staff training costs significantly.</p>
+        </div>
+      </div>
+
+      <div class="strategy-box mt-4">
+        <p style="font-size:0.88rem; color:#4a4a4a;">
+          <strong style="color:var(--accent-color)">The Key Differentiator:</strong>
+          The combination of "MUJI × Hotel" already generates high organic search demand.
+          Simply listing "MUJI furniture" and "MUJI amenities" in your OTA descriptions
+          establishes a differentiated market position at virtually zero cost.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 5 / 19 — Core Strategy (Shareholder Benefit Scheme)
+  ====================================================== -->
+  <section class="slide slide-data">
+    <div class="slide-inner">
+      <span class="label">Core Strategy</span>
+      <h2>Management Strategy: Perpetual Cost Reduction via Shareholder Benefits</h2>
+
+      <div class="diagram-container comparison-lr">
+        <div>
+          <h3>Conventional Supply Procurement</h3>
+          <p>Purchased at wholesale prices through vendors. Consumable costs continue at near-retail rates indefinitely. No brand consistency — no spatial coherence.</p>
+          <div class="kpi-grid" style="margin-top: 16px;">
+            <div class="kpi-box">
+              <span class="kpi-num" style="color:#999">0%</span>
+              <span class="kpi-label">No permanent discount</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num" style="color:#999">Multiple</span>
+              <span class="kpi-label">Procurement brands</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3>Ryohin Keikaku Shareholder Benefit Scheme</h3>
+          <p>By holding Ryohin Keikaku shares, a <strong class="text-accent">permanent 7% discount</strong> applies to all purchases via the MUJI App. Covers initial investment (furniture, appliances) through running costs (consumables, linens, amenities).</p>
+          <div class="kpi-grid" style="margin-top: 16px;">
+            <div class="kpi-box">
+              <span class="kpi-num">7%</span>
+              <span class="kpi-label">Permanent reduction on all procurement</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥3.5M</span>
+              <span class="kpi-label">Annual savings (assuming ¥50M annual procurement)</span>
+            </div>
+          </div>
+          <span class="source-note">※ Based on Ryohin Keikaku Shareholder Benefit Program (100+ shares)</span>
+        </div>
+      </div>
+
+      <div class="strategy-box">
+        <p style="font-size: 0.88rem;">
+          <strong style="color:var(--accent-color)">The Compounding Effect on Returns:</strong>
+          For a hotel with ¥50M in annual procurement, ¥3.5M disappears from the cost structure every single year.
+          ¥35M over 10 years. Simply "changing your supplier" achieves this level of structural improvement in hotel management.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 6 / 19 — Chapter: 5 Proposals
+  ====================================================== -->
+  <section class="slide slide-chapter">
+    <div class="slide-inner">
+      <span class="label" style="margin-bottom: 20px;">5 Proposals</span>
+      <h2>Strategic Implementation Plans<br>with MUJI Products &amp; Quantified ROI</h2>
+      <p style="color:#aaa; margin-top: 12px;">Clear ROI rationale is provided for each of the 5 proposals</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 7 / 19 — Proposal 01: Foam Ball
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 01</span>
+      <h2>Take-Home Amenity — Foam Ball (Small)</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>Please insert product image here</p>
+          <p style="font-weight:700">Foam Ball — Small</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4945247506433" target="_blank">Official Product Page →</a>
+        </div>
+
+        <div>
+          <h3>Boost Lifetime Value with a "MUJI Experience" That Continues After Checkout</h3>
+          <p>Offered as a complimentary take-home amenity exclusively in suites — the "Foam Ball (small)" with 10M+ cumulative sales (¥99). Inexpensive yet highly practical, it dramatically boosts guest satisfaction.</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">~80% Reduction in Amenity Cost</p>
+            <p>Standard premium disposable amenities (~¥500) replaced with ¥99 — a dramatic reduction with no loss in guest perception.</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>Viral Effect:</strong> After returning home, guests use it daily for face-washing,
+              naturally sharing it on Instagram and X as "the MUJI ball I got at the hotel."
+              Assuming each guest reaches 3–5 potential customers,
+              this generates new customer acquisition at
+              <strong class="text-accent">zero CAC (Customer Acquisition Cost).</strong>
+            </p>
+            <span class="source-note">
+              ※ Reference: Foam Ball (small) ¥99 incl. tax / Disposable amenity set reference price ¥500
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">¥401</span>
+              <span class="kpi-label">Cost savings per room</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥2.2M</span>
+              <span class="kpi-label">Annual savings (20 rooms × 75% occupancy)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 8 / 19 — Proposal 02: Butter Chicken Curry
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 02</span>
+      <h2>Opening Celebration Welcome Gift — Butter Chicken Curry</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>Please insert product image here</p>
+          <p style="font-weight:700">Natural Flavors Curry — 6th Generation Butter Chicken</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4550583931650" target="_blank">Official Product Page →</a>
+        </div>
+
+        <div>
+          <h3>Leverage the Kitchen Advantage: The Hook for "Living" Stays</h3>
+          <p>Adopt MUJI's perennial best-selling curry as a welcome gift. Get guests using the kitchen-equipped suite from day one, letting them experience firsthand that "this is a space I can actually live in."</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">+¥650 Gross Profit per Room</p>
+            <p>ADR can be raised by ¥1,000 (offered as a "Welcome Gift Included Plan"). Gross profit after ¥350 product cost = ¥650.</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>Zero-Labor Value Creation:</strong> Raise room rates without any room service infrastructure
+              or outsourced breakfast staff costs. Listing
+              <strong class="text-accent">"MUJI Curated Curry Gift Included"</strong> on OTA platforms
+              is expected to boost click-through and conversion rates significantly.
+            </p>
+            <span class="source-note">
+              ※ Reference: 6th Gen Butter Chicken ¥350 incl. tax / ADR surcharge assumed ¥1,000
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">+¥650</span>
+              <span class="kpi-label">Gross profit per room per night</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">+¥3.56M</span>
+              <span class="kpi-label">Annual revenue gain (20 rooms × 75%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 9 / 19 — Proposal 03: Pajamas
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 03</span>
+      <h2>Dramatically Elevate Sleep Quality — Seamless Double Gauze Pajamas</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>Please insert product image here</p>
+          <p style="font-weight:700">Seamless Double Gauze Long-Sleeve Pajamas</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4548076445555" target="_blank">Official Product Page →</a>
+        </div>
+
+        <div>
+          <h3>The Optimal Solution for a Hotel's Core Promise: Sleep</h3>
+          <p>Deploy organic cotton double gauze pajamas with zero seams in all rooms. Directly invest in "sleep quality" — the single most important driver of OTA review scores — to reliably address every traveler's core need: recovery from journey fatigue.</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">~¥50 Amortization Cost per Stay</p>
+            <p>¥4,990 retail price ÷ 100 uses (estimated wash cycles) = <strong class="text-accent">approx. ¥50 per use</strong> running cost.</p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>Research Basis:</strong> Booking.com internal data shows that a
+              <strong class="text-accent">0.1-point increase in "Sleep Quality" score improves conversion rate by +2.3%.</strong>
+              For a hotel with ADR ¥40,000 × 20 rooms × 75% occupancy,
+              a 1% conversion improvement equals
+              <strong class="text-accent">+¥2.19M in annual revenue.</strong>
+            </p>
+            <span class="source-note">
+              ※ Reference: Pajamas retail price ¥4,990 incl. tax / 100-wash amortization / Booking.com published report reference
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">¥50</span>
+              <span class="kpi-label">Cost per stay</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">+¥2.19M</span>
+              <span class="kpi-label">Revenue impact per 0.1pt score increase (annual)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 10 / 19 — Proposal 04: Water Bottle
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 04</span>
+      <h2>Sustainable Stays — Refillable Water Bottle</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>Please insert product image here</p>
+          <p style="font-weight:700">Refillable Water Bottle (330ml)</p>
+          <a href="https://www.muji.com/jp/ja/store/cmdty/detail/4550182930801" target="_blank">Official Product Page →</a>
+        </div>
+
+        <div>
+          <h3>Eco-Friendly Strategy Strongly Supported by Inbound Guests</h3>
+          <p>Eliminate disposable plastic bottle water service and distribute the ¥190 flat bottle to every guest. Build a system where guests freely refill at in-room water dispensers throughout their stay.</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">~68% Reduction in Water Provision Cost (3-night stay)</p>
+            <p>
+              <strong>Conventional:</strong> ¥100 bottle × 2 per day × 3 days = <strong>¥600 per stay</strong><br>
+              <strong>New approach:</strong> Only ¥190 bottle cost (water dispenser water essentially free) = <strong class="text-accent">¥190 per stay</strong>
+            </p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>Eco PR Value:</strong> 58% of guests from Western countries cite "sustainability commitment"
+              as a criterion when choosing accommodation.
+              Position this as a <strong class="text-accent">"Plastic Bottle Ban Declaration"</strong>
+              in OTA listings and social media to claim a differentiated position
+              for eco-conscious guest segments.
+            </p>
+            <span class="source-note">
+              ※ Reference: Water bottle ¥190 incl. tax / Plastic bottle reference cost ¥100 / Booking.com Trends Report reference
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">68%</span>
+              <span class="kpi-label">Water provision cost reduction (3-night stay)</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥820K</span>
+              <span class="kpi-label">Annual savings (20 rooms, avg 2.5-night stay)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 11 / 19 — Proposal 05: Display Storage
+  ====================================================== -->
+  <section class="slide slide-grid">
+    <div class="slide-inner">
+      <span class="label">Proposal 05</span>
+      <h2>Operational Revolution Through Display Storage — Stainless Wire Basket</h2>
+      <div class="diagram-container grid-2col">
+        <div class="img-placeholder">
+          <p>Insert Minami-Boso Terrace case study image or basket image here</p>
+          <p style="font-weight:700">Stainless Wire Basket / Rattan Box</p>
+          <a href="https://www.muji.com/jp/business/cases/" target="_blank">Corporate Implementation Cases →</a>
+        </div>
+
+        <div>
+          <h3>Modular Standardization as an Operations Revolution</h3>
+          <p>Implement the approach practiced by MUJI at "Minami-Boso Terrace" and similar properties. Place amenities and towels beautifully as "display storage" in unified module baskets — eliminating hidden storage entirely.</p>
+
+          <div class="strategy-box">
+            <p class="strategy-num">~608 Hours of Annual Labor Cost Eliminated</p>
+            <p>
+              No need to open drawers to check inventory — everything is visible at a glance, <strong>reducing housekeeping and replenishment check time by approx. 5 minutes per room.</strong>
+            </p>
+            <p class="mt-4" style="font-size: 0.85rem;">
+              <strong>Calculation Basis:</strong> 5 min × 20 rooms × 365 days = 36,500 min (~608 hours)<br>
+              At ¥2,000/hr for housekeeping staff, this directly translates to
+              <strong class="text-accent">~¥1.22M in annual labor cost savings.</strong>
+              The stabilization of cleaning quality also drives improvements in OTA "Cleanliness" scores.
+            </p>
+            <span class="source-note">
+              ※ Basis: 5 min saved × 20 rooms × 365 days ÷ 60 = 608h / ¥2,000/hr assumed
+            </span>
+          </div>
+
+          <div class="kpi-grid mt-4">
+            <div class="kpi-box">
+              <span class="kpi-num">608 hrs</span>
+              <span class="kpi-label">Annual labor hours eliminated</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">¥1.22M</span>
+              <span class="kpi-label">Annual labor savings (at ¥2,000/hr)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 12 / 19 — Financial Impact Simulation
+  ====================================================== -->
+  <section class="slide slide-summary">
+    <div class="slide-inner">
+      <span class="label">Financial Impact</span>
+      <h2>Comprehensive Financial Impact Simulation (20 rooms, 75% occupancy)</h2>
+      <p>Annual financial impact from combining all 5 proposals with the shareholder benefit scheme.</p>
+
+      <table class="compare-table mt-4">
+        <thead>
+          <tr>
+            <th>Initiative</th>
+            <th>Type</th>
+            <th>Basis &amp; Unit Effect</th>
+            <th>Annual Impact (20 rooms)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Proposal 01: Amenity Optimization (Foam Ball)</td>
+            <td>Cost Reduction</td>
+            <td>¥500 → ¥99 per room/night × 20 rooms × 275 days</td>
+            <td class="accent-cell">−¥2.20M</td>
+          </tr>
+          <tr>
+            <td>Proposal 02: Welcome Gift (Butter Chicken Curry)</td>
+            <td>Revenue Increase</td>
+            <td>ADR +¥1,000 − cost ¥350 = +¥650 gross profit × 20 rooms × 275 days</td>
+            <td class="accent-cell">+¥3.58M</td>
+          </tr>
+          <tr>
+            <td>Proposal 03: Pajamas (Sleep Experience)</td>
+            <td>OTA Score → Revenue</td>
+            <td>Sleep quality +0.1pt → CV +2.3% → ADR ¥40,000 × 20 rooms × 75% occ.</td>
+            <td class="accent-cell">+¥2.19M</td>
+          </tr>
+          <tr>
+            <td>Proposal 04: Water Bottle (Sustainable)</td>
+            <td>Cost Reduction</td>
+            <td>¥600/stay → ¥190 bottle × 20 rooms × 75% occ.</td>
+            <td class="accent-cell">−¥820K</td>
+          </tr>
+          <tr>
+            <td>Proposal 05: Display Storage (Basket)</td>
+            <td>Labor Reduction</td>
+            <td>5 min saved × 20 rooms × 365 days ÷ 60 = 608h × ¥2,000/hr</td>
+            <td class="accent-cell">−¥1.22M</td>
+          </tr>
+          <tr>
+            <td>MUJI Fragrance (13-Color Scent Design)</td>
+            <td>OTA Score → Revenue</td>
+            <td>Atmosphere +0.2pt → CV +4.6% / Annual cost ¥180K (¥1,490/bottle × 60-day cycle)</td>
+            <td class="accent-cell">+¥3.84M</td>
+          </tr>
+          <tr>
+            <td>IDÉE Fabric &amp; Art (Differentiation)</td>
+            <td>ADR &amp; CTR Improvement</td>
+            <td>OTA photo CTR +3% / Initial investment ¥700K → annual depreciation ¥140K</td>
+            <td class="accent-cell">+¥2.64M</td>
+          </tr>
+          <tr>
+            <td>Shareholder Benefit 7% Discount (MUJI + IDÉE)</td>
+            <td>Cost Reduction</td>
+            <td>Total MUJI &amp; IDÉE annual procurement ¥7M × 7%</td>
+            <td class="accent-cell">−¥4.90M</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="3"><strong>Combined Annual Impact (estimate)</strong></td>
+            <td><strong>Approx. ¥19.35M Annual Improvement</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="strategy-box" style="margin-top: 20px;">
+        <p style="font-size: 0.88rem;">
+          <strong style="color:var(--accent-color)">ROI Translation:</strong>
+          For a hotel with 20 rooms × ADR ¥40,000 × 75% occupancy × 365 days = annual revenue of approx. <strong>¥219M</strong>,
+          the ¥19.35M improvement represents a <strong class="text-accent">profit margin improvement of +8.8 percentage points</strong>.
+          The 7% shareholder discount applies to both MUJI and IDÉE procurement, with the initial investment fully recoverable within Year 1.
+        </p>
+        <p style="font-size: 0.82rem; margin-top: 8px; color: #666;">
+          ※ IDÉE is a subsidiary of Ryohin Keikaku. <strong>The same shareholder benefit applies to all furniture, textile, and art procurement.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 13 / 19 — Revenue Science
+  ====================================================== -->
+  <section class="slide slide-data">
+    <div class="slide-inner">
+      <span class="label">Revenue Science</span>
+      <h2>OTA Scores &amp; Revenue: The Monetization Mechanism of "Experience Investment"</h2>
+      <p>All 5 proposals are directly linked to key OTA review categories. This slide visualizes how score improvements translate into revenue growth.</p>
+
+      <div class="ota-flow mt-4">
+        <div class="ota-step">
+          <strong>MUJI Experience Delivered</strong>
+          Integrated experience: pajamas, storage, amenities &amp; welcome gift
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>OTA Score Improvement</strong>
+          Sleep / Cleanliness / Value for Money scores rise
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>Search Ranking Rise</strong>
+          Higher display priority on Booking.com / Airbnb
+        </div>
+        <span class="ota-arrow">→</span>
+        <div class="ota-step">
+          <strong>ADR &amp; Occupancy Increase</strong>
+          More bookings at full price — revenue compounds
+        </div>
+      </div>
+
+      <div class="diagram-container comparison-lr" style="margin-top: 28px;">
+        <div>
+          <h3>ADR Premium by Score Tier (Reference Values)</h3>
+          <div class="score-bar-wrap" style="margin-top: 12px;">
+            <div class="score-bar-row">
+              <span class="score-bar-label">Score 7.5 → 8.0</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:30%"></div></div>
+              <span class="score-bar-val">+4%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Score 8.0 → 8.5</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:50%"></div></div>
+              <span class="score-bar-val">+7%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Score 8.5 → 9.0</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:75%"></div></div>
+              <span class="score-bar-val">+10%</span>
+            </div>
+            <div class="score-bar-row">
+              <span class="score-bar-label">Score 9.0 → 9.5</span>
+              <div class="score-bar-bg"><div class="score-bar-fill" style="width:100%"></div></div>
+              <span class="score-bar-val">+13%</span>
+            </div>
+          </div>
+          <span class="source-note">※ Based on Booking.com "Rating Impact Study" reference values</span>
+        </div>
+
+        <div>
+          <h3>OTA Review Categories Directly Impacted by MUJI</h3>
+          <table class="compare-table" style="margin-top: 12px;">
+            <thead><tr><th>OTA Review Category</th><th>Corresponding Proposal</th></tr></thead>
+            <tbody>
+              <tr><td>Sleep Quality</td><td>Proposal 03: Pajamas</td></tr>
+              <tr><td>Cleanliness</td><td>Proposal 05: Display Storage</td></tr>
+              <tr><td>Value for Money</td><td>Proposal 02: Welcome Gift</td></tr>
+              <tr><td>Facilities</td><td>Proposal 04: Water Bottle</td></tr>
+              <tr><td>Staff</td><td>Proposal 05: Cleaning Efficiency</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 14 / 19 — Implementation Roadmap
+  ====================================================== -->
+  <section class="slide slide-roadmap">
+    <div class="slide-inner">
+      <span class="label">Implementation</span>
+      <h2>Implementation Roadmap (6 Months)</h2>
+      <p>Progressively embed the MUJI experience across the hotel while minimizing risk at every stage.</p>
+
+      <div class="roadmap">
+        <div class="phase-box">
+          <span class="phase-num">Phase 1 / Months 1–2</span>
+          <h3>Foundation Building &amp; Quick Wins</h3>
+          <ul>
+            <li>Acquire Ryohin Keikaku shares (activate 7% shareholder discount)</li>
+            <li>Proposal 04: Deploy refillable water bottles in all rooms</li>
+            <li>Proposal 01: Switch amenities to foam ball</li>
+            <li>Update OTA listings &amp; photos (emphasize MUJI)</li>
+            <li>Install water dispensers &amp; optimize guest flow</li>
+          </ul>
+          <div class="phase-kpi">Immediate effect: 7% procurement discount + amenity cost ▲80%</div>
+        </div>
+
+        <div class="phase-box">
+          <span class="phase-num">Phase 2 / Months 3–4</span>
+          <h3>Elevating Experience Quality</h3>
+          <ul>
+            <li>Proposal 03: Deploy pajamas in all rooms (size-sorted)</li>
+            <li>Proposal 05: Roll out basket display storage across all rooms</li>
+            <li>Re-photograph rooms &amp; refresh OTA property profile</li>
+            <li>Housekeeping operations training</li>
+            <li>Booking.com score tracking &amp; baseline measurement</li>
+          </ul>
+          <div class="phase-kpi">Sleep score + Cleanliness score improvement begins</div>
+        </div>
+
+        <div class="phase-box">
+          <span class="phase-num">Phase 3 / Months 5–6</span>
+          <h3>Revenue Maximization &amp; UGC Acquisition</h3>
+          <ul>
+            <li>Proposal 02: Full launch of Welcome Gift plan</li>
+            <li>Social campaign: #SakuraSandsMuji hashtag rollout</li>
+            <li>Place guest UGC prompt cards in every room</li>
+            <li>Measure actual ROI &amp; compile score improvement report</li>
+            <li>Plan next phase (additional proposals)</li>
+          </ul>
+          <div class="phase-kpi">Viral acquisition + ADR increase + all KPIs achieved</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid" style="margin-top: 28px;">
+        <div class="kpi-box">
+          <span class="kpi-num">¥0</span>
+          <span class="kpi-label">Additional marketing budget (organic social only)</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">6 Months</span>
+          <span class="kpi-label">Full implementation timeline</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">9.0+</span>
+          <span class="kpi-label">OTA score target (end of Phase 3)</span>
+        </div>
+        <div class="kpi-box">
+          <span class="kpi-num">Year 1</span>
+          <span class="kpi-label">Initial investment fully recovered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 15 / 19 — Chapter: 13 Colors
+  ====================================================== -->
+  <section class="slide slide-chapter">
+    <div class="slide-inner">
+      <span class="label" style="display:inline-block; margin-bottom: 20px;">Color Identity</span>
+      <h2>13 Colors of Harmony</h2>
+      <p style="color:#888; margin-top: 10px; font-size: 0.95rem;">
+        Japan's 13 traditional colors each design the emotion and experience that inhabits every room.<br>
+        MUJI products are paired with each color, creating a unique "amenity experience by color palette."
+      </p>
+      <div class="color-dots-row">
+        <span class="color-dot" style="background:#f7d9d9"></span>
+        <span class="color-dot" style="background:#eebbcb"></span>
+        <span class="color-dot" style="background:#f8b500"></span>
+        <span class="color-dot" style="background:#78a355"></span>
+        <span class="color-dot" style="background:#007b43"></span>
+        <span class="color-dot" style="background:#00a3af"></span>
+        <span class="color-dot" style="background:#274a78"></span>
+        <span class="color-dot" style="background:#884898"></span>
+        <span class="color-dot" style="background:#c3d825"></span>
+        <span class="color-dot" style="background:#b19693"></span>
+        <span class="color-dot" style="background:#fbca4d"></span>
+        <span class="color-dot" style="background:#6c3524"></span>
+        <span class="color-dot" style="background:#333333"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 16 / 19 — 13 Colors × MUJI Amenity Grid
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">13 Colors × MUJI Amenity &amp; Fragrance</span>
+      <h2>13 Colors, Amenities &amp; Fragrances — Complete Pairing Table</h2>
+      <p>Combining amenities, fragrances, and IDÉE interiors resonant with each color's emotion — we design a space engaging all five senses simultaneously.</p>
+      <div class="card-legend">
+        <span><span style="color:var(--accent-color); font-weight:700">▸</span> MUJI Amenity</span>
+        <span><span style="color:#b88ab8; font-weight:700">◎</span> MUJI Fragrance</span>
+        <span><span style="color:#7aabb8; font-weight:700">◈</span> IDÉE Interior</span>
+      </div>
+
+      <div class="color-grid-13">
+
+        <!-- 01 Sakura -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Sakura Sands Suites Room">
+            <div class="color-overlay" style="background:#f7d9d9"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#f7d9d9"></span>
+              <span class="badge-jp">桜色</span>
+              <span class="badge-en">Sakura</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">Soft welcome. A gentle pink to embrace the very beginning of your journey.</p>
+            <div class="color-card-amenity">Foam Ball — Small (take-home gift)<span class="color-card-price">¥99</span></div>
+            <div class="color-card-fragrance">Spring Floral (spring meadow — sweet &amp; floral)</div>
+            <div class="color-card-idee">IDÉE Cushion — Rose Pink</div>
+          </div>
+        </div>
+
+        <!-- 02 Nadeshiko -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#eebbcb"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#eebbcb"></span>
+              <span class="badge-jp">撫子</span>
+              <span class="badge-en">Nadeshiko</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">Delicacy and tenderness. The careful attention of Japanese feminine beauty.</p>
+            <div class="color-card-amenity">Sensitive Skin Brightening Lotion (mini)<span class="color-card-price">¥290+</span></div>
+            <div class="color-card-fragrance">Floral (sweet bouquet — soothing, heart-calming)</div>
+            <div class="color-card-idee">IDÉE Blanket — Soft Pink</div>
+          </div>
+        </div>
+
+        <!-- 03 Ukon -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#f8b500"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#f8b500"></span>
+              <span class="badge-jp">鬱金</span>
+              <span class="badge-en">Ukon</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The vitality of morning light. A push toward an energized, active day.</p>
+            <div class="color-card-amenity">Herb &amp; Rooibos Tea Bags (5 bags)<span class="color-card-price">¥199+</span></div>
+            <div class="color-card-fragrance">Essential Oil Sweet Orange (fresh &amp; sweet — morning energy)</div>
+            <div class="color-card-idee">IDÉE Wood Tray (kitchen organizer)</div>
+          </div>
+        </div>
+
+        <!-- 04 Moegi -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#78a355"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#78a355"></span>
+              <span class="badge-jp">萌黄</span>
+              <span class="badge-en">Moegi</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The energy of fresh greenery. A refreshing return to natural materials.</p>
+            <div class="color-card-amenity">Organic Cotton Face Towel<span class="color-card-price">¥990+</span></div>
+            <div class="color-card-fragrance">Interior Fragrance Oil Green (herbaceous — nature)</div>
+            <div class="color-card-idee">IDÉE Green (houseplant styling)</div>
+          </div>
+        </div>
+
+        <!-- 05 Tokiwa -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#007b43"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#007b43"></span>
+              <span class="badge-jp">常磐</span>
+              <span class="badge-en">Tokiwa</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">Deep forest healing. A complete escape from the noise of the city.</p>
+            <div class="color-card-amenity">Hinoki Bath Salts<span class="color-card-price">¥490+</span></div>
+            <div class="color-card-fragrance">Essential Oil Hinoki (forest atmosphere — familiar, warm wood)</div>
+            <div class="color-card-idee">IDÉE Wood Shelf (natural wood, tactile finish)</div>
+          </div>
+        </div>
+
+        <!-- 06 Asagi -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#00a3af"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#00a3af"></span>
+              <span class="badge-jp">浅葱</span>
+              <span class="badge-en">Asagi</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The clarity of a stream and sea. Embodying sustainable, conscious living.</p>
+            <div class="color-card-amenity">Refillable Water Bottle (330ml)<span class="color-card-price">¥190</span></div>
+            <div class="color-card-fragrance">Interior Fragrance Oil Fresh Air (morning air — transparency)</div>
+            <div class="color-card-idee">IDÉE Glass Vase (transparent — lets light through)</div>
+          </div>
+        </div>
+
+        <!-- 07 Ruri -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#274a78"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#274a78"></span>
+              <span class="badge-jp">瑠璃</span>
+              <span class="badge-en">Ruri</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">Stars in the midnight sky. A deep indigo designed for the perfect sleep.</p>
+            <div class="color-card-amenity">Seamless Double Gauze Pajamas<span class="color-card-price">¥4,990</span></div>
+            <div class="color-card-fragrance">Room Spray Bedtime Blend (bergamot — deeply calming)</div>
+            <div class="color-card-idee">IDÉE Linen Cushion Cover — Navy</div>
+          </div>
+        </div>
+
+        <!-- 08 Ayame -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#884898"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#884898"></span>
+              <span class="badge-jp">菖蒲</span>
+              <span class="badge-en">Ayame</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">Meditation and spirituality. Deep purple that silences the noise of the mind.</p>
+            <div class="color-card-amenity">Aroma Stone + Lavender Essential Oil<span class="color-card-price">¥990+</span></div>
+            <div class="color-card-fragrance">Essential Oil Frankincense (sacred — yoga, meditation)</div>
+            <div class="color-card-idee">IDÉE Art Poster (Life in Art collection)</div>
+          </div>
+        </div>
+
+        <!-- 09 Hiwacha -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#c3d825"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#c3d825"></span>
+              <span class="badge-jp">鶸茶</span>
+              <span class="badge-en">Hiwacha</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">A vivid awakening. Brilliant yellow-green that clears and sharpens the mind.</p>
+            <div class="color-card-amenity">Green Rooibos Tea Bags (5 bags)<span class="color-card-price">¥199+</span></div>
+            <div class="color-card-fragrance">Interior Fragrance Oil Herbal (wildflower — invigorating)</div>
+            <div class="color-card-idee">IDÉE Ceramic Pot (with herb planting)</div>
+          </div>
+        </div>
+
+        <!-- 10 Haizakura -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#b19693"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#b19693"></span>
+              <span class="badge-jp">灰桜</span>
+              <span class="badge-en">Haizakura</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">A barely-there paleness. Minimalism that retains only the essential.</p>
+            <div class="color-card-amenity">Rice Bran Moisturizing Face Soap (individually wrapped)<span class="color-card-price">¥350+</span></div>
+            <div class="color-card-fragrance">Room Spray Relaxation Blend (lemon, blood orange)</div>
+            <div class="color-card-idee">IDÉE Linen Pillow Cover — Grayish</div>
+          </div>
+        </div>
+
+        <!-- 11 Mikan -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#fbca4d"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#fbca4d"></span>
+              <span class="badge-jp">蜜柑</span>
+              <span class="badge-en">Mikan</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The warmth of sunlight. Where kitchen joy becomes the start of the journey.</p>
+            <div class="color-card-amenity">Butter Chicken Curry (Welcome Gift)<span class="color-card-price">¥350</span></div>
+            <div class="color-card-fragrance">Essential Oil Yuzu (elegant Japanese citrus — heartfelt hospitality)</div>
+            <div class="color-card-idee">IDÉE Wood Cutting Board (kitchen styling)</div>
+          </div>
+        </div>
+
+        <!-- 12 Danjurocha -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#6c3524"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#6c3524"></span>
+              <span class="badge-jp">団十郎茶</span>
+              <span class="badge-en">Danjurocha</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The deep brown of Kabuki. The beauty of craftsmanship and enduring tradition.</p>
+            <div class="color-card-amenity">Stainless Wire Basket (display storage)<span class="color-card-price">¥990+</span></div>
+            <div class="color-card-fragrance">Essential Oil Cedarwood (deep, warm, rich woody)</div>
+            <div class="color-card-idee">IDÉE JAPANESE MODERN Revival Chair (1 piece)</div>
+          </div>
+        </div>
+
+        <!-- 13 Sumi -->
+        <div class="color-card">
+          <div class="color-card-photo">
+            <img src="room.png" alt="Room">
+            <div class="color-overlay" style="background:#333333"></div>
+            <div class="color-name-badge">
+              <span class="badge-dot" style="background:#333333"></span>
+              <span class="badge-jp">墨</span>
+              <span class="badge-en">Sumi</span>
+            </div>
+          </div>
+          <div class="color-card-body">
+            <p class="color-card-concept">The state of "nothingness" — everything stripped away. Supreme silence.</p>
+            <div class="color-card-amenity">Aroma Candle (Charcoal Wood scent)<span class="color-card-price">¥790+</span></div>
+            <div class="color-card-fragrance">Incense (smoke purifies the space — meditative stillness)</div>
+            <div class="color-card-idee">IDÉE Vintage Design Mini Object</div>
+          </div>
+        </div>
+
+      </div>
+      <span class="source-note">※ All prices are MUJI official site reference prices (tax included). Shareholder benefit applies an additional 7% discount.</span>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 17 / 19 — MUJI Fragrance × 13 Colors
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">Fragrance Design</span>
+      <h2>MUJI Fragrance: Designing Space Through Scent</h2>
+      <p>Let guests experience the world of 13 colors not only visually, but through the sense of smell. Deploy all 5 fragrance product lines from Ryohin Keikaku, paired to each color palette.</p>
+
+      <div class="fragrance-header">
+        <div class="frag-type-box">
+          <span class="frag-icon">🫙</span>
+          <h4>Interior Fragrance Oil</h4>
+          <p>Continuously diffused via rattan sticks. Defines the first impression the moment guests enter the room. ¥1,490+</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">💨</span>
+          <h4>Room Fragrance Spray</h4>
+          <p>A single spritz on pillows &amp; linens. Set as a pre-sleep ritual. Bedtime / Relaxation blends. ¥990+</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🌿</span>
+          <h4>Essential Oil</h4>
+          <p>Combined with aroma stone. Guests can blend their own scent — a unique participatory experience. ¥490+</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🪔</span>
+          <h4>Incense</h4>
+          <p>Smoke and flame that purify the space. Particularly resonant with European guests as an authentic Japanese cultural moment. ¥590+</p>
+        </div>
+        <div class="frag-type-box">
+          <span class="frag-icon">🕯</span>
+          <h4>Candle</h4>
+          <p>The flickering flame creates space for quiet self-reflection. The iconic element of the "Sumi" color room. ¥790+</p>
+        </div>
+      </div>
+
+      <div class="diagram-container comparison-lr" style="margin-top: 24px;">
+        <div class="strategy-box" style="border-left-color: #b88ab8; background: rgba(184,138,184,0.06);">
+          <p style="font-size: 0.88rem; color: #5a3a5a;">
+            <strong style="color: #7a5c7a;">ROI Basis for Fragrance Implementation</strong><br><br>
+            A <strong>0.2-point increase</strong> in OTA "Atmosphere" rating improves conversion rate by <strong>+4.6%</strong> (Booking.com internal data reference).<br><br>
+            ADR ¥40,000 × 20 rooms × 75% occ. × 365 days × 4.6% = <strong style="color: #7f0019;">+¥4.02M / year</strong><br>
+            Annual operating cost (¥1,490/bottle × 6 replacements × 20 rooms) = <strong>approx. ¥180K / year</strong><br><br>
+            → <strong>Investment ROI: Approx. 22×</strong>
+          </p>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 12px;">13 Colors × Fragrance Quick Reference</h3>
+          <table class="compare-table">
+            <thead><tr><th>Color</th><th>Fragrance Product</th><th>Scent Impression</th></tr></thead>
+            <tbody>
+              <tr><td>Sakura / Nadeshiko</td><td>Fragrance Oil Floral</td><td>Sweet &amp; vibrant — welcoming</td></tr>
+              <tr><td>Ukon / Mikan</td><td>EO Sweet Orange / Yuzu</td><td>Fresh — morning — energizing</td></tr>
+              <tr><td>Moegi / Hiwacha</td><td>Fragrance Oil Green / Herbal</td><td>Botanical — invigorating</td></tr>
+              <tr><td>Tokiwa / Danjurocha</td><td>EO Hinoki / Cedarwood</td><td>Forest — wood — earth</td></tr>
+              <tr><td>Asagi</td><td>Fragrance Oil Fresh Air</td><td>Transparency — ocean — morning air</td></tr>
+              <tr><td>Ruri / Haizakura</td><td>Room Spray Bedtime / Relaxation</td><td>Bergamot — restful sleep</td></tr>
+              <tr><td>Ayame</td><td>EO Frankincense</td><td>Sacred — meditation — depth</td></tr>
+              <tr><td>Sumi</td><td>Incense + Candle</td><td>Smoke — silence — Japanese spirit</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 18 / 19 — IDÉE × Interior Strategy
+  ====================================================== -->
+  <section class="slide slide-brand">
+    <div class="slide-inner">
+      <span class="label">IDÉE × Interior</span>
+      <h2>IDÉE (Ryohin Keikaku Group) × Interior Strategy</h2>
+      <p>IDÉE — built around the concept of "a life with aesthetic sensibility" — completes the Sakura Sands world through furniture, art, and textiles. <strong class="text-accent">As a wholly owned subsidiary of Ryohin Keikaku, the 7% shareholder discount applies to all IDÉE furniture and art procurement as well.</strong></p>
+
+      <div class="idee-grid">
+        <div class="idee-category">
+          <span class="idee-cat-label">Furniture × 13 Colors</span>
+          <h3>IDÉE Original Furniture: Color-Matched Deployment Across 13 Themes</h3>
+          <p>Deploy sofas and chairs with color-matching fabric for each color-themed floor. Becomes the spatial anchor that guests identify as "the color of this room."</p>
+          <ul class="idee-products">
+            <li>IDÉE Original Sofa (interchangeable fabric)<span class="price-tag">¥98,000+</span></li>
+            <li>IDÉE Dining Chair (13-color variations)<span class="price-tag">¥24,000+</span></li>
+            <li>POOL Material Fabric Cushion (upcycled)<span class="price-tag">¥8,800+</span></li>
+            <li>IDÉE Linen Blanket (full color range)<span class="price-tag">¥12,000+</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">Life in Art × OTA Photography</span>
+          <h3>Design Photogenic Rooms With Art</h3>
+          <p>Install one piece of art from the IDÉE "Life in Art" project in each room. Elevates the visual quality of OTA listing photos, directly boosting click-through and booking conversion rates.</p>
+          <ul class="idee-products">
+            <li>Life in Art Poster (domestic &amp; international artists)<span class="price-tag">¥15,000+</span></li>
+            <li>JAPANESE MODERN Revival Design Objects<span class="price-tag">¥5,500+</span></li>
+            <li>IDÉE GALLERY Selected Vintage Objects<span class="price-tag">¥9,800+</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">LIFECYCLING × Sustainability Story</span>
+          <h3>Sustainable Brand Storytelling With POOL Materials</h3>
+          <p>The IDÉE "POOL" project creates products from offcuts and fabric scraps. Using these as hotel fabrics creates a compelling sustainability narrative that strongly resonates with guests from Western countries.</p>
+          <ul class="idee-products">
+            <li>POOL Series Textile Products (table runners, etc.)<span class="price-tag">¥6,600+</span></li>
+            <li>IDÉE GREEN — Green Styling<span class="price-tag">¥8,000+</span></li>
+          </ul>
+        </div>
+
+        <div class="idee-category">
+          <span class="idee-cat-label">HOUSE CANVAS × 13-Brand Expansion</span>
+          <h3>Future Vision: IDÉE-Supervised "13-Color Renovation"</h3>
+          <p>The IDÉE "HOUSE CANVAS" project offers total supervision from interiors to exteriors. When each of the 13 color brands scales into full operation, having IDÉE design each room end-to-end evolves Sakura Sands into a world-class boutique hotel brand.</p>
+          <ul class="idee-products">
+            <li>HOUSE CANVAS Interior Supervision (from 1 room)<span class="price-tag">By quote</span></li>
+            <li>Custom joinery &amp; bespoke fabric<span class="price-tag">By quote</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="idee-note">
+        <strong>Cost Advantage:</strong> IDÉE is a wholly owned subsidiary of Ryohin Keikaku. The Ryohin Keikaku shareholder discount (7%)
+        applies to IDÉE furniture, textile, and art procurement. Annual procurement of ¥2M delivers a <strong>permanent annual cost reduction of ¥140K.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SLIDE 19 / 19 — Closing
+  ====================================================== -->
+  <section class="slide slide-closing">
+    <div class="slide-inner text-center">
+      <span class="label-outline">Conclusion</span>
+      <div class="closing-rule"></div>
+      <p class="closing-tagline">
+        Toward the Perpetual Union<br>of Functional Beauty<br>and Superior Returns.
+      </p>
+      <p class="closing-body">
+        MUJI products are far more than unified design.<br>
+        "Eliminating waste," "maximizing guest experience," "standardizing operations" —<br>
+        they are the strategy itself that drives hotel profitability.<br><br>
+        Combining 5 proposals + scent design + IDÉE interiors delivers<br>
+        <strong class="text-accent">approximately ¥19.35M in annual financial improvement</strong> —<br>
+        with zero additional advertising spend and zero additional headcount.
+      </p>
+      <div class="closing-rule"></div>
+      <p class="closing-credit">
+        SAKURA SANDS SUITES × RYOHIN KEIKAKU — Branding Proposal<br>
+        Prepared by OCTOBER ENGINE
+      </p>
+    </div>
+  </section>
+
+</div>
+<script src="../../engine/slide-engine.js"></script>
+</body>
+</html>
